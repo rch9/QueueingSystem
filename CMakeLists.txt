@@ -28,4 +28,4 @@ add_executable(main
 )
 # endif()
 
-target_link_libraries(main -pthread ${PROJECT_LINK_LIBS} Qt5::Widgets)
+target_link_libraries(main -pthread ${PROJECT_LINK_LIBS} Qt5::Widgets Qt5::Core)
