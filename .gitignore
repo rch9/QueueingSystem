@@ -3,3 +3,4 @@ bin/
 *.a
 *.so
 *.o
+*.user
