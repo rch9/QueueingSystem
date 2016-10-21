@@ -1,12 +1,9 @@
 #include "gtest/gtest.h"
-//#include <QtCore>
 #include <QApplication>
 #include <QtWidgets>
-//#include <QLabel>
-//#include <Qt  Gui>
 
 int main(int argc, char *argv[]) {
-//    ::testing::InitGoogleTest(&argc, argv);
+    ::testing::InitGoogleTest(&argc, argv);
 
 
     QApplication app(argc, argv);
@@ -14,9 +11,9 @@ int main(int argc, char *argv[]) {
     QLabel *label = new QLabel(dialog);
     label->setText("<font color=red>Hello, World!</font>");
     dialog->show();
-    return app.exec();
+    app.exec();
 
 
 
-//    return RUN_ALL_TESTS();
+    return RUN_ALL_TESTS();
 }
