@@ -25,6 +25,7 @@ find_package(Qt5Widgets)
 add_executable(main
     src/main.cpp
     test/main.cpp
+    test/test2.cpp
 )
 # endif()
 
