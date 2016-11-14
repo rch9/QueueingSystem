@@ -1,6 +1,6 @@
 #include "sourcecontroller.h"
 
-SourceController::SourceController()
+SourcesController::SourcesController()
 {
 
 }

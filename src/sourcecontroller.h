@@ -1,11 +1,17 @@
 #ifndef SOURCECONTROLLER_H
 #define SOURCECONTROLLER_H
 
+#include <vector>
+#include "source.h"
 
-class SourceController
+
+class SourcesController
 {
 public:
-    SourceController();
+    SourcesController();
+
+private:
+    std::vector<Source> _sources;
 };
 
 #endif // SOURCECONTROLLER_H

@@ -1,8 +1,13 @@
 #ifndef BID_H
 #define BID_H
 
+#include "timeable.h"
 
-class Bid {
+/**
+ * @brief The Bid class
+ */
+
+class Bid : public Timeable {
 public:
     Bid();
 };

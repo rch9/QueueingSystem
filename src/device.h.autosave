@@ -4,6 +4,7 @@
 #include "controller.h"
 
 
+
 class Device : public Controller {
 public:
     Device();

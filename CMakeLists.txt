@@ -30,7 +30,9 @@ add_executable(main
     src/device.cpp
     src/controller.cpp
     src/devicecontroller.cpp
-    src/buffercontroller.cpp
+    src/sourcecontroller.cpp
+    src/timeable.cpp
+    src/layer.cpp
     test/main.cpp
     test/test2.cpp
 )
