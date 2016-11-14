@@ -9,7 +9,7 @@
 
 class Bid : public Timeable {
 public:
-    Bid(int source);
+    Bid(float time, int source);
     Bid();
     const int &getSource() const;
 

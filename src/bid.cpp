@@ -1,10 +1,12 @@
 #include "bid.h"
 
-Bid::Bid(int source):
+Bid::Bid(float time, int source):
+    Timeable(time),
     _source(source) {
 }
 
 Bid::Bid():
+    Timeable(-1.f),
     _source(-1) {
 }
 

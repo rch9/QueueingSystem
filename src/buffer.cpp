@@ -3,19 +3,19 @@
 
 using namespace std;
 
-Buffer::Buffer(int maxSize) {
-    _bids.resize(maxSize);
+Buffer::Buffer(int maxSize):
+    _maxSize(maxSize) {
 }
 
 void Buffer::putBid(const Bid &bid) {
-    if (_bids.size() == _bids.max_size()) {
+    if (_bids.size() == _maxSize) {
         _bids.pop_back();
     }
 
     _bids.push_back(bid);
 }
 
-const Bid &&Buffer::popBid() {
+Bid Buffer::popBid() {
     auto buf = _bids.begin();
     for(auto it = _bids.begin(); it != _bids.end(); ++it) {
         if (it->getSource() < buf->getSource()) {
@@ -26,4 +26,8 @@ const Bid &&Buffer::popBid() {
     _bids.erase(buf);
 
     return bid;
+}
+
+unsigned Buffer::size() {
+    return _bids.size();
 }

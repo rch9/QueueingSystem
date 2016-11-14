@@ -11,7 +11,7 @@
 class Timeable
 {
 public:
-    Timeable(float time = 0);
+    Timeable(float time = -1.f);
 
 
     const float &getTime() const;
