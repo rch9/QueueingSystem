@@ -24,6 +24,12 @@ find_package(Qt5Widgets)
 # else()
 add_executable(main
     src/main.cpp
+    src/source.cpp
+    src/bid.cpp
+    src/buffer.cpp
+    src/device.cpp
+    src/popoutmanager.cpp
+    src/putinmanager.cpp
     test/main.cpp
     test/test2.cpp
 )
