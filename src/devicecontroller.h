@@ -8,7 +8,10 @@
 class DevicesController
 {
 public:
-    DevicesController();
+    DevicesController(int amountDevices);
+
+    //опасность
+    int getAmountDevices();
 
 private:
     void moveDevicePointer();
@@ -16,7 +19,7 @@ private:
 private:
     std::vector<Device> _devices;
     int _currentDevice;
-    static int AMOUNT_DEVICES;
+    int _amountDevices;
 };
 
 #endif // DEVICECONTROLLER_H

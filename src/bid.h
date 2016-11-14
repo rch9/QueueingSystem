@@ -10,7 +10,8 @@
 class Bid : public Timeable {
 public:
     Bid(int source);
-    int getSource() const;
+    Bid();
+    const int &getSource() const;
 
 private:
     int _source;

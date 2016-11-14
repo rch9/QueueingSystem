@@ -6,7 +6,7 @@
 
 class Buffer {
 public:
-    Buffer();
+    Buffer(int maxSize);
 
     void putBid(const Bid &bid);
     const Bid &&popBid();

@@ -3,11 +3,15 @@
 //need fix param
 DevicesController::DevicesController(int amountDevices):
     _currentDevice(0),
-    AMOUNT_DEVICES(amountDevices) {
+    _amountDevices(amountDevices) {
 }
 
 void DevicesController::moveDevicePointer() {
-    if (++_currentDevice == AMOUNT_DEVICES) {
+    if (++_currentDevice == _amountDevices) {
         _currentDevice = 0;
     }
+}
+
+int DevicesController::getAmountDevices() {
+    return _amountDevices;
 }
