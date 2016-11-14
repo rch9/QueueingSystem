@@ -2,8 +2,7 @@
 #define BUFFER_H
 
 
-class Buffer
-{
+class Buffer {
 public:
     Buffer();
 };

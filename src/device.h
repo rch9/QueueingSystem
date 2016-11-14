@@ -2,8 +2,7 @@
 #define DEVICE_H
 
 
-class Device
-{
+class Device {
 public:
     Device();
 };

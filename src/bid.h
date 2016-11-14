@@ -2,8 +2,7 @@
 #define BID_H
 
 
-class Bid
-{
+class Bid {
 public:
     Bid();
 };

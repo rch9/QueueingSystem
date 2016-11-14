@@ -2,8 +2,7 @@
 #define SOURCE_H
 
 
-class Source
-{
+class Source {
 public:
     Source();
 };

@@ -28,8 +28,9 @@ add_executable(main
     src/bid.cpp
     src/buffer.cpp
     src/device.cpp
-    src/popoutmanager.cpp
-    src/putinmanager.cpp
+    src/controller.cpp
+    src/devicecontroller.cpp
+    src/buffercontroller.cpp
     test/main.cpp
     test/test2.cpp
 )

@@ -1,6 +1,5 @@
 #include "bid.h"
 
-Bid::Bid()
-{
+Bid::Bid() {
 
 }
