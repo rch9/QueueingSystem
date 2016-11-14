@@ -33,9 +33,12 @@ add_executable(main
     src/sourcecontroller.cpp
     src/timeable.cpp
     src/layer.cpp
-    test/main.cpp
-    test/test2.cpp
+    test/buffer_test.cpp
 )
+
+#add_executable(
+#)
+
 # endif()
 
 target_link_libraries(main -pthread ${PROJECT_LINK_LIBS} Qt5::Widgets Qt5::Core)

@@ -8,7 +8,7 @@
 class DevicesController
 {
 public:
-    DevicesController();
+    DevicesController(int amountDevices);
 
 private:
     void moveDevicePointer();
