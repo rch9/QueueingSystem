@@ -8,7 +8,10 @@
 class DevicesController
 {
 public:
-    DevicesController();
+    DevicesController(int amountDevices);
+
+    //опасность
+    int getAmountDevices();
 
 private:
     void moveDevicePointer();

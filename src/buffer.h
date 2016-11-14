@@ -6,13 +6,16 @@
 
 class Buffer {
 public:
-    Buffer();
+    Buffer(int maxSize);
 
     void putBid(const Bid &bid);
-    const Bid &&popBid();
+    Bid popBid();
+
+    unsigned size();
 
 private:
     std::list<Bid> _bids;
+    int _maxSize;
 };
 
 #endif // BUFFER_H

@@ -9,7 +9,12 @@
 
 class Bid : public Timeable {
 public:
+    Bid(float time, int source);
     Bid();
+    const int &getSource() const;
+
+private:
+    int _source;
 };
 
 #endif // BID_H
