@@ -1,4 +1,4 @@
-#include "sourcecontroller.h"
+#include "sourcescontroller.h"
 
 SourcesController::SourcesController()
 {

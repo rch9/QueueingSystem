@@ -29,8 +29,8 @@ add_executable(main
     src/buffer.cpp
     src/device.cpp
     src/controller.cpp
-    src/devicecontroller.cpp
-    src/sourcecontroller.cpp
+    src/devicescontroller.cpp
+    src/sourcescontroller.cpp
     src/timeable.cpp
     src/layer.cpp
     test/buffer_test.cpp
