@@ -37,6 +37,7 @@ add_executable(main
 
     test/buffer_test.cpp
     test/randomHelper_test.cpp
+    test/source_test.cpp
 )
 
 #add_executable(

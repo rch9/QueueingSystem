@@ -2,6 +2,7 @@
 #include "randomhelper.h"
 
 Source::Source(float first, float second):
+    Controller(),
     _first(first),
     _second(second) {
 }

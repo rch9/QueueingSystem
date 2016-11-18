@@ -28,13 +28,6 @@ TEST(BufferTest, putBid) {
     EXPECT_EQ(buffer.size(), 0);
 }
 
-//TEST(BufferTest1, Negative) {
-////    EXPECT_EQ(1, 1);
-//}
-
-//TEST(BufferTest2, Negative) {
-////    EXPECT_EQ(1, 1);
-//}
 
 
 

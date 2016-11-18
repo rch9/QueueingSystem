@@ -11,6 +11,7 @@ class Bid : public Timeable {
 public:
     Bid(float time, int source);
     Bid();
+    ~Bid();
     const int &getSource() const;
 
 private:

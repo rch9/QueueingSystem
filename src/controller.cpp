@@ -1,8 +1,9 @@
 #include "controller.h"
 
-Controller::Controller()
-{
-
+Controller::Controller():
+    Timeable(0.f),
+    _isFree(false),
+    _maxTime(0.f) {
 }
 
 void Controller::putBid(const Bid &bid) {
@@ -13,7 +14,6 @@ void Controller::putBid(const Bid &bid) {
 void Controller::popBid() {
     _isFree = true;
     // вероятно не надо
-    ~_bid();
 }
 
 const bool &Controller::isFree() {
