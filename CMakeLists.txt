@@ -33,6 +33,7 @@ add_executable(main
     src/sourcescontroller.cpp
     src/timeable.cpp
     src/layer.cpp
+    src/randomhelper.cpp
     test/buffer_test.cpp
 )
 

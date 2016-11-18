@@ -1,5 +1,5 @@
 #include "buffer.h"
-#include "devicecontroller.h"
+#include "devicescontroller.h"
 
 using namespace std;
 

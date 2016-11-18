@@ -1,4 +1,4 @@
-#include "devicecontroller.h"
+#include "devicescontroller.h"
 
 //need fix param
 DevicesController::DevicesController(int amountDevices):

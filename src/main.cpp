@@ -1,6 +1,9 @@
 #include "gtest/gtest.h"
 #include <QApplication>
 #include <QtWidgets>
+#include "random"
+#include <chrono>
+#include "iostream"
 
 int main(int argc, char *argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
@@ -14,6 +17,12 @@ int main(int argc, char *argv[]) {
     app.exec();
 
 
-
     return RUN_ALL_TESTS();
 }
+
+
+
+
+
+
+
