@@ -35,6 +35,7 @@ add_executable(main
     src/layer.cpp
     src/randomhelper.cpp
     test/buffer_test.cpp
+    test/randomHelper_test.cpp
 )
 
 #add_executable(
