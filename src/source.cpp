@@ -1,9 +1,11 @@
 #include "source.h"
+#include "randomhelper.h"
 
-Source::Source() {
-
+Source::Source(float first, float second):
+    _first(first),
+    _second(second) {
 }
 
 float Source::distributionLaw() {
-    return 1.1f;
+    return RandomHelper::rand_uniform(_first, _second);
 }

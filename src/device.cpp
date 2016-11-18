@@ -1,10 +1,9 @@
 #include "device.h"
+#include "randomhelper.h"
 
-Device::Device()
-{
-
-}
+Device::Device(float lambda):
+    _lambda(lambda) {}
 
 float Device::distributionLaw() {
-    return 1.f;
+    return RandomHelper::rand_exponential(_lambda);
 }

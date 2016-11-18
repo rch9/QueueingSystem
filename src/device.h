@@ -7,9 +7,11 @@
 
 class Device : public Controller {
 public:
-    Device();
+    Device(float lambda);
 protected:
-    float distributionLaw() override;
+    float distributionLaw();
+private:
+    float _lambda;
 };
 
 #endif // DEVICE_H

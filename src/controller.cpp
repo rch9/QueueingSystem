@@ -12,6 +12,8 @@ void Controller::putBid(const Bid &bid) {
 
 void Controller::popBid() {
     _isFree = true;
+    // вероятно не надо
+    ~_bid();
 }
 
 const bool &Controller::isFree() {
