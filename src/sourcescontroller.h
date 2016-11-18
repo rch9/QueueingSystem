@@ -1,7 +1,7 @@
 #ifndef SOURCECONTROLLER_H
 #define SOURCECONTROLLER_H
 
-#include <vector>
+#include <list>
 #include "source.h"
 
 
@@ -11,7 +11,7 @@ public:
     SourcesController();
 
 private:
-    std::vector<Source> _sources;
+    std::list<Source> _sources;
 };
 
 #endif // SOURCECONTROLLER_H
