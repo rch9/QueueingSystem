@@ -1,5 +1,5 @@
 #include "device.h"
-#include "randomhelper.h"
+#include "../utils/randomhelper.h"
 
 Device::Device(float lambda):
     Controller(),

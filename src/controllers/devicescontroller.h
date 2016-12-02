@@ -2,7 +2,7 @@
 #define DEVICECONTROLLER_H
 
 #include <list>
-#include "device.h"
+#include "../timeableClasses/device.h"
 
 
 class DevicesController

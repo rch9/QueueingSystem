@@ -2,7 +2,7 @@
 #define SOURCECONTROLLER_H
 
 #include <list>
-#include "source.h"
+#include "../timeableClasses/source.h"
 
 
 // Надо потом отнаследовать init

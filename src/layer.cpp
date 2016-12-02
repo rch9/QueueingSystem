@@ -1,5 +1,5 @@
 #include "layer.h"
-#include "director.h"
+#include "timeableClasses/director.h"
 
 Layer::Layer(int numberOfSources, int numberOfDevices, int bufferSize, float workTime):
     _numberOfSources(numberOfSources),

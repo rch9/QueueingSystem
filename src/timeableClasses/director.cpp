@@ -6,14 +6,10 @@ Director &Director::getInstance() {
     return director;
 }
 
-const float &Director::getGlobalTime() const {
-    return _globalTime;
-}
-
 void Director::addGlobalTime(const float &dt) {
     _globalTime += dt;
 }
 
 Director::Director():
-    _globalTime(0.f) {
+    Timeable(0) {
 }

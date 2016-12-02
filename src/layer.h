@@ -1,8 +1,8 @@
 #ifndef LAYER_H
 #define LAYER_H
 
-#include "devicescontroller.h"
-#include "sourcescontroller.h"
+#include "controllers/devicescontroller.h"
+#include "controllers/sourcescontroller.h"
 #include "buffer.h"
 #include <vector>
 

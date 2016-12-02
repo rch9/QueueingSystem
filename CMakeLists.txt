@@ -24,17 +24,17 @@ find_package(Qt5Widgets)
 # else()
 add_executable(main
     src/main.cpp
-    src/source.cpp
-    src/bid.cpp
+    src/timeableClasses/source.cpp
+    src/timeableClasses/bid.cpp
     src/buffer.cpp
-    src/device.cpp
-    src/controller.cpp
-    src/devicescontroller.cpp
-    src/sourcescontroller.cpp
-    src/timeable.cpp
+    src/timeableClasses/device.cpp
+    src/timeableClasses/controller.cpp
+    src/timeableClasses/timeable.cpp
     src/layer.cpp
-    src/randomhelper.cpp
-    src/director.cpp
+    src/utils/randomhelper.cpp
+    src/timeableClasses/director.cpp
+    src/controllers/devicescontroller.cpp
+    src/controllers/sourcescontroller.cpp
 
     test/buffer_test.cpp
     test/randomHelper_test.cpp
