@@ -15,7 +15,7 @@ Layer::Layer(int numberOfSources, int numberOfDevices, int bufferSize, float wor
 void Layer::init() {
     _buffer.init(_bufferSize);
     _sourceController.init(_numberOfSources);
-    _deviceController.init(_numberOfDevices);
+    _deviceController.init({1, 1, 1,1});
 }
 
 bool Layer::run() {

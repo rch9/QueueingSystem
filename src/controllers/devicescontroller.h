@@ -2,7 +2,8 @@
 #define DEVICECONTROLLER_H
 
 #include "../timeableClasses/device.h"
-#include <list>
+//#include <list>
+#include <deque>
 #include <ostream>
 
 class DevicesController
@@ -11,7 +12,10 @@ public:
 //    DevicesController(int amountDevices);
     DevicesController();
 
-    void init(const int &amount);
+//    void f(const int&... args);
+
+//    void init(size_t amount);
+    void init(int ... args1);
     void putBidToDevice(const Bid &bid);
 
     float getMinDeviceTime() const;
@@ -29,7 +33,7 @@ private:
     void moveDevicePointer();
 
 private:
-    std::list<Device> _devices;
+    std::deque<Device> _devices;
     int _currentDevice;
     int _amountDevices;
 };
