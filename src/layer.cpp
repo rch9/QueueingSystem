@@ -1,4 +1,5 @@
 #include "layer.h"
+#include "director.h"
 
 Layer::Layer(int numberOfSources, int numberOfDevices, int bufferSize, float workTime):
     _numberOfSources(numberOfSources),
@@ -15,10 +16,11 @@ void Layer::init() {
 }
 
 bool Layer::run() {
+    auto director = Director::getInstance();
 
+    while (director.getGlobalTime() < _workTime) {
 
-    while (1) {
-
+        director.addGlobalTime(0.1);
     }
 
     return true;

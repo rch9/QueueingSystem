@@ -12,8 +12,9 @@ public:
     DevicesController();
 
     void init(const int &amount);
-
     void putBidToDevice(Bid bid);
+
+    float getMinDeviceTime() const;
     //опасность
 //    int getAmountDevices();
 

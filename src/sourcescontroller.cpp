@@ -16,7 +16,7 @@ void SourcesController::init(const int &amount) {
 
 
 // FIXME: return Bid;
-Source SourcesController::pullSource() {
+Source SourcesController::pullMinSource() {
     auto minIt = _sources.begin();
     for(auto it = _sources.begin(); it != _sources.end(); ++it) {
         if ((*it).getTime() < (*minIt).getTime()) {
@@ -25,4 +25,8 @@ Source SourcesController::pullSource() {
     }
 
     return *minIt;
+}
+
+float SourcesController::pullMinSourceTime() {
+    return pullMinSource().getTime();
 }

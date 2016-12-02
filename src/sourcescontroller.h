@@ -20,7 +20,8 @@ public:
      *
      * Вытаскивает самый подходящий по времени поток
      */
-    Source pullSource();
+    Source pullMinSource();
+    float pullMinSourceTime();
 
 private:
     std::list<Source> _sources;

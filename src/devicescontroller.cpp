@@ -1,11 +1,5 @@
 #include "devicescontroller.h"
 
-//need fix param
-//DevicesController::DevicesController(int amountDevices):
-//    _currentDevice(0),
-//    _amountDevices(amountDevices) {
-//}
-
 DevicesController::DevicesController():
     _currentDevice(0) {
 }
@@ -21,12 +15,19 @@ void DevicesController::putBidToDevice(Bid bid) {
 
 }
 
+float DevicesController::getMinDeviceTime() const {
+    auto minIt = _devices.begin();
+    for(auto it = _devices.begin(); it != _devices.end(); ++it) {
+        if ((*it).getTime() < (*minIt).getTime()) {
+            minIt = it;
+        }
+    }
+
+    return (*minIt).getTime();
+}
+
 void DevicesController::moveDevicePointer() {
     if (++_currentDevice == _amountDevices) {
         _currentDevice = 0;
     }
 }
-
-//int DevicesController::getAmountDevices() {
-//    return _amountDevices;
-//}
