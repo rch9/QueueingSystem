@@ -4,7 +4,11 @@
 
 class Director
 {
+public:
     static Director &getInstance();
+
+    const float &getGlobalTime() const;
+    void addGlobalTime(const float &dt);
 
 private:
     Director();
