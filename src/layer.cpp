@@ -26,23 +26,24 @@ bool Layer::run() {
         float deviceTime = _deviceController.getMinDeviceTime();
         float sourceTime = _sourceController.getMinSourceTime();
 
-        if (sourceTime < deviceTime) {
+        cout << _sourceController << endl;
+        cout << _deviceController << endl;
+        cout << _buffer << endl;
+
+        if (!_buffer.size() || sourceTime < deviceTime) {
             // generate Bid To Buffer
+//            cout << "aaaaaa";
+            _buffer.putBid(_sourceController.pullMinSourceBid());
         } else {
             // take bid from buffer
-        }
+            _deviceController.putBidToDevice(_buffer.popBid());
+        }                
 
         cout << _sourceController << endl;
         cout << _deviceController << endl;
         cout << _buffer << endl;
 
-        _deviceController.putBidToDevice(_sourceController.pullMinSourceBid());
-
-
-        cout << _sourceController << endl;
-        cout << _deviceController << endl;
-        cout << _buffer << endl;
-        director.addGlobalTime(0.1);
+        director.setTime(sourceTime < deviceTime ? sourceTime : deviceTime);
         break;
     }
 

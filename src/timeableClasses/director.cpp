@@ -10,10 +10,6 @@ void Director::setTime(const float &time) {
     _time = time;
 }
 
-//void Director::addGlobalTime(const float &dt) {
-//    _time += dt;
-//}
-
 Director::Director():
     Timeable(0) {
 }

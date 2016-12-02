@@ -21,7 +21,7 @@ public:
 //    const bool &isFree();
 
 protected:
-    virtual void addServiceTime();
+    void addServiceTime();
     virtual float distributionLaw() = 0;
 protected:
     float _maxTime;

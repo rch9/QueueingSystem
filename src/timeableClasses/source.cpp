@@ -9,8 +9,10 @@ Source::Source(float first, float second):
 }
 
 Bid Source::generateBid() {
+    Bid bid(_time, _number);
     addServiceTime();
-    return Bid(/*другое*/_time, _number);
+
+    return bid;
 }
 
 float Source::distributionLaw() {
