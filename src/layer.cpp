@@ -18,10 +18,10 @@ void Layer::init() {
 bool Layer::run() {
     auto director = Director::getInstance();
 
-    while (director.getGlobalTime() < _workTime) {
+//    while (director.getGlobalTime() < _workTime) {
 
-        director.addGlobalTime(0.1);
-    }
+//        director.addGlobalTime(0.1);
+//    }
 
     return true;
 }

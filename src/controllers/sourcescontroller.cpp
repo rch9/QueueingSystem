@@ -10,7 +10,7 @@ void SourcesController::init(const int &amount) {
     for(int i = 0; i < amount; ++i) {
         _sources.push_back(Source(1, 2));
         _sources.back().generateBid();
-        std::cout << _sources.back().getTime() << "\n";
+//        std::cout << _sources.back().getTime() << "\n";
     }
 }
 
@@ -30,3 +30,23 @@ Source SourcesController::pullMinSource() {
 float SourcesController::pullMinSourceTime() {
     return pullMinSource().getTime();
 }
+
+//friend std::ostream &SourcesController::operator<<(std::ostream &os, const SourcesController &arg) {
+
+//    os << "Sourses:\n";
+//    for(auto it = arg._sources.begin(); it != arg._sources.end(); ++it) {
+//        os << (*it).getTime() << "\n";
+//    }
+//    os << "\n";
+
+//    return os;
+
+//}
+
+//std::ostream &SourcesController::operator<<(std::ostream &os) {
+//    os << "Sourses:\n";
+//    for(auto it = _sources.begin(); it != _sources.end(); ++it) {
+//        os << (*it).getTime() << "\n";
+//    }
+//    os << "\n";
+//}

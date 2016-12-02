@@ -1,9 +1,9 @@
 #ifndef SOURCECONTROLLER_H
 #define SOURCECONTROLLER_H
 
-#include <list>
 #include "../timeableClasses/source.h"
-
+#include "ostream"
+#include <list>
 
 // Надо потом отнаследовать init
 
@@ -23,8 +23,20 @@ public:
     Source pullMinSource();
     float pullMinSourceTime();
 
+    friend std::ostream& operator<< (std::ostream& os, const SourcesController& arg) {
+        os << "Sourses:\n";
+        for(auto it = arg._sources.begin(); it != arg._sources.end(); ++it) {
+            os << (*it).getTime() << "\n";
+        }
+        os << "\n";
+
+        return os;
+    }
+
 private:
     std::list<Source> _sources;
 };
+
+
 
 #endif // SOURCECONTROLLER_H

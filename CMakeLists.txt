@@ -40,6 +40,7 @@ add_executable(main
     test/randomHelper_test.cpp
     test/source_test.cpp
     test/source_controller_test.cpp
+    test/layer_test.cpp
 )
 
 #add_executable(

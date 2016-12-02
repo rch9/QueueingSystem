@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "src/timeableClasses/source.h"
+#include "src/layer.h"
 
 /**
  * @brief TEST
@@ -7,8 +7,8 @@
  */
 
 
-TEST(SourceTest, hz) {
-    Source source(1.f, 10.f);
+TEST(LayerTest, hz) {
+//    Layer layer(3, 3, 3, 10);
 
 
 

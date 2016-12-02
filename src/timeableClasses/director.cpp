@@ -7,7 +7,7 @@ Director &Director::getInstance() {
 }
 
 void Director::addGlobalTime(const float &dt) {
-    _globalTime += dt;
+    _time += dt;
 }
 
 Director::Director():

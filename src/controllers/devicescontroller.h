@@ -1,9 +1,9 @@
 #ifndef DEVICECONTROLLER_H
 #define DEVICECONTROLLER_H
 
-#include <list>
 #include "../timeableClasses/device.h"
-
+#include <list>
+#include <ostream>
 
 class DevicesController
 {
@@ -15,8 +15,16 @@ public:
     void putBidToDevice(Bid bid);
 
     float getMinDeviceTime() const;
-    //опасность
-//    int getAmountDevices();
+
+    friend std::ostream& operator<< (std::ostream& os, const DevicesController& arg) {
+        os << "Devices:\n";
+        for(auto it = arg._devices.begin(); it != arg._devices.end(); ++it) {
+            os << (*it).getTime() << "\n";
+        }
+        os << "\n";
+
+        return os;
+    }
 
 private:
     void moveDevicePointer();

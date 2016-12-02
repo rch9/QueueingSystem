@@ -1,8 +1,9 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "bid.h"
+#include "timeableClasses/bid.h"
 #include <list>
+#include <ostream>
 
 class Buffer {
 public:
@@ -15,6 +16,16 @@ public:
     Bid popBid();
 
     unsigned size();
+
+    friend std::ostream& operator<< (std::ostream& os, const Buffer& arg) {
+        os << "Buffer:\n";
+        for(auto it = arg._bids.begin(); it != arg._bids.end(); ++it) {
+            os << (*it).getTime() << "\n";
+        }
+        os << "\n";
+
+        return os;
+    }
 
 private:
     std::list<Bid> _bids;

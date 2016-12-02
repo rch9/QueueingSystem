@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "src/sourcescontroller.h"
+#include "src/controllers/sourcescontroller.h"
 
 #include <iostream>
 
@@ -10,8 +10,10 @@
 
 
 TEST(SourceControllerTest, hz) {
-//    SourcesController controller;
-//    controller.init(3);
+    SourcesController controller;
+    controller.init(3);
+
+    std::cout << controller;
 
 //    std::cout << "\n\n" << controller.pullSource().getTime() << "\n\n";
 
