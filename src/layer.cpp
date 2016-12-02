@@ -26,6 +26,12 @@ bool Layer::run() {
     cout << _deviceController << endl;
     cout << _buffer << endl;
 
+    _sourceController.pullMinSourceBid();
+
+    cout << _sourceController << endl;
+    cout << _deviceController << endl;
+    cout << _buffer << endl;
+
 //    while (director.getGlobalTime() < _workTime) {
 
 //        director.addGlobalTime(0.1);

@@ -20,8 +20,9 @@ public:
      *
      * Вытаскивает самый подходящий по времени поток
      */
-    Source pullMinSource();
+    Source &pullMinSource();
     float pullMinSourceTime();
+    Bid pullMinSourceBid();
 
     friend std::ostream& operator<< (std::ostream& os, const SourcesController& arg) {
         os << "Sourses:\n";

@@ -8,8 +8,8 @@
 
 
 TEST(LayerTest, hz) {
-    Layer layer(3, 3, 3, 10);
+//    Layer layer(3, 3, 3, 10);
 
-    layer.run();
+//    layer.run();
 
 }

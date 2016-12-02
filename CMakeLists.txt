@@ -15,6 +15,9 @@ link_directories(${MY_ROOT}/external/gtest/build)
 set(PROJECT_LINK_LIBS libgtest.a)
 include_directories(${MY_ROOT}/external/gtest/include)
 
+#Debug for gdb
+set(CMAKE_BUILD_TYPE Debug)
+
 #Qt
 find_package(Qt5Widgets)
 
