@@ -5,10 +5,14 @@
 #include "source.h"
 
 
+// Надо потом отнаследовать init
+
 class SourcesController
 {
 public:
     SourcesController();
+
+    void init(const int &amount);
 
 private:
     std::list<Source> _sources;

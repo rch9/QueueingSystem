@@ -8,7 +8,10 @@
 class DevicesController
 {
 public:
-    DevicesController(int amountDevices);
+//    DevicesController(int amountDevices);
+    DevicesController();
+
+    void init(const int &amount);
 
     //опасность
     int getAmountDevices();

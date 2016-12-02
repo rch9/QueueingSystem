@@ -3,8 +3,11 @@
 
 using namespace std;
 
-Buffer::Buffer(int maxSize):
-    _maxSize(maxSize) {
+Buffer::Buffer() {
+}
+
+void Buffer::init(int maxSize) {
+    _maxSize = maxSize;
 }
 
 void Buffer::putBid(const Bid &bid) {

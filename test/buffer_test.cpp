@@ -8,7 +8,8 @@
 
 
 TEST(BufferTest, putBid) {
-    Buffer buffer(4);
+    Buffer buffer;
+    buffer.init(4);
     buffer.putBid(Bid(0, 0));
     buffer.putBid(Bid(0, 1));
     buffer.putBid(Bid(0, 2));
