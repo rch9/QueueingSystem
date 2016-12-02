@@ -15,18 +15,18 @@ class Controller : public Timeable
 {
 public:
     Controller();
-    void putBid(const Bid &bid);
-    void popBid();
+//    void putBid(const Bid &bid);
+//    void popBid();
 
-    const bool &isFree();
+//    const bool &isFree();
 
 protected:
     void addServiceTime();
     virtual float distributionLaw() = 0;
 protected:
     float _maxTime;
-    Bid _bid;
-    bool _isFree;
+//    Bid _bid;
+//    bool _isFree;
 };
 
 #endif // CONTROLLER_H

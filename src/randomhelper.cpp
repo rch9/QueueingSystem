@@ -1,7 +1,6 @@
 #include "randomhelper.h"
 
 RandomHelper::RandomHelper() {
-
 }
 
 float RandomHelper::rand_exponential(const float &lambda) {

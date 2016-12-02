@@ -8,8 +8,7 @@
  */
 
 
-class Timeable
-{
+class Timeable {
 public:
     Timeable(float time = -1.f);
 

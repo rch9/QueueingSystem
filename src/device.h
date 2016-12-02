@@ -8,6 +8,7 @@
 class Device : public Controller {
 public:
     Device(float lambda);
+
 protected:
     float distributionLaw();
 private:
