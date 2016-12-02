@@ -21,21 +21,30 @@ void Layer::init() {
 bool Layer::run() {
     auto director = Director::getInstance();
 
+    while (director.getTime() < _workTime) {
 
-    cout << _sourceController << endl;
-    cout << _deviceController << endl;
-    cout << _buffer << endl;
+        float deviceTime = _deviceController.getMinDeviceTime();
+        float sourceTime = _sourceController.getMinSourceTime();
 
-    _sourceController.pullMinSourceBid();
+        if (sourceTime < deviceTime) {
+            // generate Bid To Buffer
+        } else {
+            // take bid from buffer
+        }
 
-    cout << _sourceController << endl;
-    cout << _deviceController << endl;
-    cout << _buffer << endl;
+        cout << _sourceController << endl;
+        cout << _deviceController << endl;
+        cout << _buffer << endl;
 
-//    while (director.getGlobalTime() < _workTime) {
+        _deviceController.putBidToDevice(_sourceController.pullMinSourceBid());
 
-//        director.addGlobalTime(0.1);
-//    }
+
+        cout << _sourceController << endl;
+        cout << _deviceController << endl;
+        cout << _buffer << endl;
+        director.addGlobalTime(0.1);
+        break;
+    }
 
     return true;
 }

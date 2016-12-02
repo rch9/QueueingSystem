@@ -9,7 +9,8 @@ public:
     static Director &getInstance();
 
 //    const float &getGlobalTime() const;
-    void addGlobalTime(const float &dt);
+//    void addGlobalTime(const float &dt);
+    void setTime(const float &time);
 
 private:
     Director();

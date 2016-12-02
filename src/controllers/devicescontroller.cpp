@@ -11,7 +11,7 @@ void DevicesController::init(const int &amount) {
     }
 }
 
-void DevicesController::putBidToDevice(Bid bid) {
+void DevicesController::putBidToDevice(const Bid &bid) {
 
 }
 

@@ -24,7 +24,7 @@ Source &SourcesController::pullMinSource() {
     return *minIt;
 }
 
-float SourcesController::pullMinSourceTime() {
+float SourcesController::getMinSourceTime() {
     return pullMinSource().getTime();
 }
 

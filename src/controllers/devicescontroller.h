@@ -12,7 +12,7 @@ public:
     DevicesController();
 
     void init(const int &amount);
-    void putBidToDevice(Bid bid);
+    void putBidToDevice(const Bid &bid);
 
     float getMinDeviceTime() const;
 
