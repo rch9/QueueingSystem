@@ -1,5 +1,8 @@
 #include "layer.h"
 #include "timeableClasses/director.h"
+#include <iostream>
+
+using namespace std;
 
 Layer::Layer(int numberOfSources, int numberOfDevices, int bufferSize, float workTime):
     _numberOfSources(numberOfSources),
@@ -17,6 +20,11 @@ void Layer::init() {
 
 bool Layer::run() {
     auto director = Director::getInstance();
+
+
+    cout << _sourceController << endl;
+    cout << _deviceController << endl;
+    cout << _buffer << endl;
 
 //    while (director.getGlobalTime() < _workTime) {
 

@@ -28,7 +28,6 @@ public:
         for(auto it = arg._sources.begin(); it != arg._sources.end(); ++it) {
             os << (*it).getTime() << "\n";
         }
-        os << "\n";
 
         return os;
     }

@@ -21,7 +21,6 @@ public:
         for(auto it = arg._devices.begin(); it != arg._devices.end(); ++it) {
             os << (*it).getTime() << "\n";
         }
-        os << "\n";
 
         return os;
     }

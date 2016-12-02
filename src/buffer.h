@@ -22,7 +22,6 @@ public:
         for(auto it = arg._bids.begin(); it != arg._bids.end(); ++it) {
             os << (*it).getTime() << "\n";
         }
-        os << "\n";
 
         return os;
     }
