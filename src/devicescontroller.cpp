@@ -17,12 +17,16 @@ void DevicesController::init(const int &amount) {
     }
 }
 
+void DevicesController::putBidToDevice(Bid bid) {
+
+}
+
 void DevicesController::moveDevicePointer() {
     if (++_currentDevice == _amountDevices) {
         _currentDevice = 0;
     }
 }
 
-int DevicesController::getAmountDevices() {
-    return _amountDevices;
-}
+//int DevicesController::getAmountDevices() {
+//    return _amountDevices;
+//}

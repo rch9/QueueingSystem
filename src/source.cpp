@@ -5,9 +5,11 @@ Source::Source(float first, float second):
     Controller(),
     _first(first),
     _second(second) {
+    addServiceTime();
 }
 
-Bid Source::generateBid() const {
+Bid Source::generateBid() {
+    addServiceTime();
     return Bid(/*другое*/_time, _number);
 }
 

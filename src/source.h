@@ -8,7 +8,7 @@ class Source : public Controller {
 public:
     Source(float first, float second);
 
-    Bid generateBid() const;
+    Bid generateBid();
 
 private:
     float distributionLaw();

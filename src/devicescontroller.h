@@ -13,8 +13,9 @@ public:
 
     void init(const int &amount);
 
+    void putBidToDevice(Bid bid);
     //опасность
-    int getAmountDevices();
+//    int getAmountDevices();
 
 private:
     void moveDevicePointer();

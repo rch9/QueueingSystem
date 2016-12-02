@@ -14,6 +14,14 @@ public:
 
     void init(const int &amount);
 
+    /**
+     * @brief pullBid
+     * @return
+     *
+     * Вытаскивает самый подходящий по времени поток
+     */
+    Source pullSource();
+
 private:
     std::list<Source> _sources;
 };
