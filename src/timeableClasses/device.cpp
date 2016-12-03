@@ -3,7 +3,8 @@
 
 Device::Device(float lambda):
     Controller(),
-    _lambda(lambda) {    
+    _lambda(lambda) {
+    addServiceTime();
 }
 
 void Device::putBid(Bid bid) {

@@ -1,10 +1,11 @@
 #include "source.h"
 #include "../utils/randomhelper.h"
 
-Source::Source(float first, float second):
+Source::Source(float first, float second, int number):
     Controller(),
     _first(first),
-    _second(second) {
+    _second(second),
+    _number(number) {
     addServiceTime();
 }
 

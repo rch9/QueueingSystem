@@ -14,8 +14,8 @@ public:
 
 //    void f(const int&... args);
 
-//    void init(size_t amount);
-    void init(int ... args1);
+    void init(int amount);
+//    void init(int ... args1);
     void putBidToDevice(const Bid &bid);
 
     float getMinDeviceTime() const;

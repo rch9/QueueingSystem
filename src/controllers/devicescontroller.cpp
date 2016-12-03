@@ -7,28 +7,29 @@ DevicesController::DevicesController():
     _currentDevice(0) {
 }
 
-void DevicesController::init(int args1) {
-    auto ilist = std::initializer_list<int>{args1...};
-    _amountDevices = ilist.size();
+//void DevicesController::init(int amount) {
+//    auto ilist = std::initializer_list<int>{amount...};
+//    _amountDevices = ilist.size();
 
-    for (auto&& p : list) {
-        std::cout << p << "   ";
-        _devices.push_back(Device(p));
-    }
-}
-
-//void DevicesController::init(size_t amount) {
-//    _amountDevices = amount;
-//    for(int i = 0; i < amount; ++i) {
-//        _devices.push_back(Device(1));
+//    for (auto&& p : list) {
+//        std::cout << p << "   ";
+//        _devices.push_back(Device(p));
 //    }
 //}
 
+void DevicesController::init(int amount) {
+    _amountDevices = amount;
+    for(int i = 0; i < amount; ++i) {
+        _devices.push_back(Device(1));
+    }
+}
+
 void DevicesController::putBidToDevice(const Bid &bid) {
-    while (Director::getInstance().getTime() < _devices.at(_currentDevice)) {
+    while (Director::getInstance().getTime() < _devices.at(_currentDevice).getTime()) {
+        // тут циклится
         moveDevicePointer();
     }
-    _devices.at(_currentDevice).putBid();
+    _devices.at(_currentDevice).putBid(bid);
 }
 
 float DevicesController::getMinDeviceTime() const {

@@ -19,7 +19,7 @@ int main(/*int argc, char *argv[]*/) {
 
 //    RUN_ALL_TESTS();
 
-    Layer layer(3, 3, 3, 10);
+    Layer layer(3, 3, 3, 10.f);
     layer.run();
 
     return 0;

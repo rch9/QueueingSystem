@@ -6,7 +6,7 @@
 
 class Source : public Controller {
 public:
-    Source(float first, float second);
+    Source(float first, float second, int number);
 
     Bid generateBid();
 

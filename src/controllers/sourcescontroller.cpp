@@ -8,7 +8,7 @@ SourcesController::SourcesController()
 
 void SourcesController::init(const int &amount) {
     for(int i = 0; i < amount; ++i) {
-        _sources.push_back(Source(-10, 200));
+        _sources.push_back(Source(-0.5, 1, i));
         _sources.back().generateBid();
     }
 }
