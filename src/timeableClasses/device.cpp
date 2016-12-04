@@ -13,6 +13,10 @@ void Device::putBid(Bid bid) {
     addServiceTime();
 }
 
+void Device::free() {
+    _time = 0.f;
+}
+
 float Device::distributionLaw() {
     return RandomHelper::rand_exponential(_lambda);
 }

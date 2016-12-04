@@ -39,6 +39,7 @@ bool Layer::run() {
                 }
                 _deviceController.putBidToDevice(_buffer.popBid());
             }
+            cout << "\nfree smth\n";
         }
 
         cout << _sourceController << endl;

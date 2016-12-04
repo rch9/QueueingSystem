@@ -20,6 +20,8 @@ public:
 
     float getMinDeviceTime() const;
 
+    void freeReadyDevices();
+
     friend std::ostream& operator<< (std::ostream& os, const DevicesController& arg) {
         os << "Devices:\n";
         for(auto it = arg._devices.begin(); it != arg._devices.end(); ++it) {

@@ -1,7 +1,7 @@
 #include "devicescontroller.h"
 #include "../timeableClasses/director.h"
 #include <iostream>
-//#include <deque>
+#include "src/timeableClasses/director.h"
 
 DevicesController::DevicesController():
     _currentDevice(0) {
@@ -43,6 +43,14 @@ float DevicesController::getMinDeviceTime() const {
     }
 
     return (*minIt).getTime();
+}
+
+void DevicesController::freeReadyDevices() {
+    for(auto it = _devices.begin(); it != _devices.end(); ++it) {
+        if ((*it).getTime() < Director::getInstance().getTime()) {
+            (*it).free();
+        }
+    }
 }
 
 void DevicesController::moveDevicePointer() {
