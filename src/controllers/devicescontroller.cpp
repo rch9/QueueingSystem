@@ -25,11 +25,13 @@ void DevicesController::init(int amount) {
 }
 
 void DevicesController::putBidToDevice(const Bid &bid) {
-    while (Director::getInstance().getTime() < _devices.at(_currentDevice).getTime()) {
-        // тут циклится
+    for(int i = 0; i < _amountDevices; ++i) {
+        if (_devices.at(_currentDevice).getTime() == getMinDeviceTime()) {
+            _devices.at(_currentDevice).putBid(bid);
+            break;
+        }
         moveDevicePointer();
     }
-    _devices.at(_currentDevice).putBid(bid);
 }
 
 float DevicesController::getMinDeviceTime() const {

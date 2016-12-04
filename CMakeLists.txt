@@ -39,11 +39,12 @@ add_executable(main
     src/controllers/devicescontroller.cpp
     src/controllers/sourcescontroller.cpp
 
-    test/buffer_test.cpp
-    test/randomHelper_test.cpp
-    test/source_test.cpp
-    test/source_controller_test.cpp
-    test/layer_test.cpp
+#    test/buffer_test.cpp
+#    test/randomHelper_test.cpp
+#    test/source_test.cpp
+#    test/source_controller_test.cpp
+    test/device_controller_test.cpp
+#    test/layer_test.cpp
 )
 
 #add_executable(

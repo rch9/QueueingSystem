@@ -1,12 +1,12 @@
 #include "layer.h"
-//#include "gtest/gtest.h"
+#include "gtest/gtest.h"
 //#include <QApplication>
 //#include <QtWidgets>
 #include <random>
 #include <chrono>
 #include <iostream>
 
-int main(/*int argc, char *argv[]*/) {
+int main(int argc, char *argv[]) {
 //    ::testing::InitGoogleTest(&argc, argv);
 
 
@@ -17,9 +17,8 @@ int main(/*int argc, char *argv[]*/) {
 //    dialog->show();
 //    app.exec();
 
-//    RUN_ALL_TESTS();
 
-    Layer layer(3, 3, 3, 10.f);
+    Layer layer(3, 3, 3, 1.f);
     layer.run();
 
     return 0;
