@@ -1,4 +1,5 @@
 #include "director.h"
+#include <iostream>
 
 Director &Director::getInstance() {
     static Director director;
@@ -11,5 +12,5 @@ void Director::setTime(const float &time) {
 }
 
 Director::Director():
-    Timeable(0) {
+    Timeable(0) {    
 }

@@ -19,34 +19,32 @@ void Layer::init() {
 }
 
 bool Layer::run() {
-    auto director = Director::getInstance();
-
-
     cout << _sourceController << endl;
     cout << _buffer << endl;
     cout << _deviceController << endl;
+    cout << endl << "======================" << endl;
 
-    while (director.getTime() < _workTime) {
-
+    while (Director::getInstance().getTime() < _workTime) {
         float deviceTime = _deviceController.getMinDeviceTime();
         float sourceTime = _sourceController.getMinSourceTime();
 
         if (!_buffer.size() || sourceTime < deviceTime) {
+            Director::getInstance().setTime(sourceTime);
+
             _buffer.putBid(_sourceController.pullMinSourceBid());
-            director.setTime(sourceTime);
         } else {
             if (_buffer.size()) {
+                if (deviceTime != 0.f) {
+                    Director::getInstance().setTime(deviceTime);
+                }
                 _deviceController.putBidToDevice(_buffer.popBid());
             }
-            director.setTime(deviceTime);
         }
 
         cout << _sourceController << endl;
         cout << _buffer << endl;
         cout << _deviceController << endl;
-
-        //        director.setTime(sourceTime < deviceTime ? sourceTime : deviceTime);
-        //        break;
+        cout << endl << "======================" << endl;
     }
 
     return true;

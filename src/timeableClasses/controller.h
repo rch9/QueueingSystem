@@ -24,7 +24,7 @@ protected:
     void addServiceTime();
     virtual float distributionLaw() = 0;
 protected:
-    float _maxTime;
+//    float _maxTime;
 //    Bid _bid;
 //    bool _isFree;
 };

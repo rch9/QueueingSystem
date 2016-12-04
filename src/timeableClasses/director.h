@@ -8,14 +8,10 @@ class Director : public Timeable
 public:
     static Director &getInstance();
 
-//    const float &getGlobalTime() const;
-//    void addGlobalTime(const float &dt);
-    void setTime(const float &time);
-
-private:
+    void setTime(const float &time);        
+private:    
     Director();
-private:
-//    float _globalTime;
+private:    
 };
 
 #endif // DIRECTOR_H
