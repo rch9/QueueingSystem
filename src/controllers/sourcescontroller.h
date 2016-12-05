@@ -13,7 +13,6 @@ class SourcesController
 public:
     SourcesController();
 
-    void init(const int &amount);
     void init(std::initializer_list<float> args);
     /**
      * @brief pullBid

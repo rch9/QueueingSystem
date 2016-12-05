@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "src/controllers/devicescontroller.h"
 #include "src/buffer.h"
-
+#include "src/timeableClasses/director.h"
 #include <iostream>
 
 /**
@@ -11,24 +11,17 @@
 
 
 TEST(DeviceControllerTest, hz) {
-    Buffer buffer;
-    buffer.init(3);
 
     DevicesController deviceController;
-    deviceController.init(3);
+    deviceController.init({1, 2});
 
-    std::cout << std::endl << buffer << std::endl;
+    deviceController.putBidToDevice(Bid(3.f, 0));
+    deviceController.putBidToDevice(Bid(0.f, 1));
+
     std::cout << std::endl << deviceController << std::endl;
 
-    buffer.putBid(Bid());
-    buffer.putBid(Bid());
-    buffer.putBid(Bid());
-
-    std::cout << std::endl << buffer << std::endl;
-
-    deviceController.putBidToDevice(buffer.popBid());
-    deviceController.putBidToDevice(buffer.popBid());
-    deviceController.putBidToDevice(buffer.popBid());
+    Director::getInstance().setTime(2.f);
+    deviceController.freeReadyDevices();
 
     std::cout << std::endl << deviceController << std::endl;
 }

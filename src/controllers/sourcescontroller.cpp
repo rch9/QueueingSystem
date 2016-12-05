@@ -1,16 +1,7 @@
 #include "sourcescontroller.h"
 #include <iostream>
 
-SourcesController::SourcesController()
-{
-
-}
-
-void SourcesController::init(const int &amount) {
-    for(int i = 0; i < amount; ++i) {
-        _sources.push_back(Source(-0.5, 1, i));
-        _sources.back().generateBid();
-    }
+SourcesController::SourcesController() {
 }
 
 void SourcesController::init(std::initializer_list<float> args) {

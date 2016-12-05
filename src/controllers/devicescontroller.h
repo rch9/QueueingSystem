@@ -10,15 +10,10 @@
 class DevicesController
 {
 public:
-//    DevicesController(int amountDevices);
     DevicesController();
 
-//    void f(const int&... args);
-
-    void init(int amount);
 
     void init(std::initializer_list<float> args);
-//    void init(int ... args1);
     void putBidToDevice(const Bid &bid);
 
     float getMinDeviceTime() const;

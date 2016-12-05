@@ -7,13 +7,6 @@ DevicesController::DevicesController():
     _currentDevice(0) {
 }
 
-void DevicesController::init(int amount) {
-    _amountDevices = amount;
-    for(int i = 0; i < amount; ++i) {
-        _devices.push_back(Device(1));
-    }
-}
-
 void DevicesController::init(std::initializer_list<float> args) {
     _amountDevices = args.size();
     for (auto arg: args) {
@@ -45,8 +38,10 @@ float DevicesController::getMinDeviceTime() const {
 void DevicesController::freeReadyDevices() {
     for(auto it = _devices.begin(); it != _devices.end(); ++it) {
         if ((*it).getTime() < Director::getInstance().getTime()) {
-            (*it).freeBid();
-            std::cout << "free dev T: " << (*it).getTime() << "bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance().getTime() << std::endl;
+            if ((*it).getBid().getSource() != -1) {
+                std::cout << "free dev T: " << (*it).getTime() << " bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance().getTime() << std::endl;
+                (*it).freeBid();
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ Layer::Layer(int numberOfSources, int numberOfDevices, int bufferSize, float wor
 void Layer::init() {
     _buffer.init(_bufferSize);
     _sourceController.init({0, 1, 0, 1, 0, 1});
-    _deviceController.init({1, 0.1});
+    _deviceController.init({1, 1});
 }
 
 bool Layer::run() {
@@ -28,8 +28,6 @@ bool Layer::run() {
         float deviceTime = _deviceController.getMinDeviceTime();
         float sourceTime = _sourceController.getMinSourceTime();
 
-
-        _deviceController.freeReadyDevices();
         if (!_buffer.size() || sourceTime < deviceTime) {
             Director::getInstance().setTime(sourceTime);
             _buffer.putBid(_sourceController.pullMinSourceBid());
@@ -41,6 +39,8 @@ bool Layer::run() {
             }
             _deviceController.putBidToDevice(_buffer.popBid());
         }
+
+        _deviceController.freeReadyDevices();
 
         cout << _sourceController << endl;
         cout << _buffer << endl;
