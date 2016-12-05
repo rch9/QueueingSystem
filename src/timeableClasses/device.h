@@ -10,7 +10,9 @@ public:
     Device(float lambda);
 
     void putBid(Bid bid);
-    void free();
+    void freeBid();
+
+    const Bid &getBid() const;
 
 protected:
     float distributionLaw();

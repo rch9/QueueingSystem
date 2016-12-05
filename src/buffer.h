@@ -20,7 +20,7 @@ public:
     friend std::ostream& operator<< (std::ostream& os, const Buffer& arg) {
         os << "Buffer:\n";
         for(auto it = arg._bids.begin(); it != arg._bids.end(); ++it) {
-            os << (*it).getTime() << "\n";
+            os << "T: " << (*it).getTime() << " S: " << (*it).getSource() << "\n";
         }
 
         return os;

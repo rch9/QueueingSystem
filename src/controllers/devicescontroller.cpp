@@ -7,16 +7,6 @@ DevicesController::DevicesController():
     _currentDevice(0) {
 }
 
-//void DevicesController::init(int amount) {
-//    auto ilist = std::initializer_list<int>{amount...};
-//    _amountDevices = ilist.size();
-
-//    for (auto&& p : list) {
-//        std::cout << p << "   ";
-//        _devices.push_back(Device(p));
-//    }
-//}
-
 void DevicesController::init(int amount) {
     _amountDevices = amount;
     for(int i = 0; i < amount; ++i) {
@@ -24,8 +14,15 @@ void DevicesController::init(int amount) {
     }
 }
 
+void DevicesController::init(std::initializer_list<float> args) {
+    _amountDevices = args.size();
+    for (auto arg: args) {
+        _devices.push_back(Device(arg));
+    }
+}
+
 void DevicesController::putBidToDevice(const Bid &bid) {
-    for(int i = 0; i < _amountDevices; ++i) {
+    for (int i = 0; i < _amountDevices; ++i) {
         if (_devices.at(_currentDevice).getTime() == getMinDeviceTime()) {
             _devices.at(_currentDevice).putBid(bid);
             break;
@@ -48,7 +45,8 @@ float DevicesController::getMinDeviceTime() const {
 void DevicesController::freeReadyDevices() {
     for(auto it = _devices.begin(); it != _devices.end(); ++it) {
         if ((*it).getTime() < Director::getInstance().getTime()) {
-            (*it).free();
+            (*it).freeBid();
+            std::cout << "free dev T: " << (*it).getTime() << "bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance().getTime() << std::endl;
         }
     }
 }

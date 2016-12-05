@@ -5,6 +5,7 @@
 //#include <list>
 #include <deque>
 #include <ostream>
+#include <initializer_list>
 
 class DevicesController
 {
@@ -15,6 +16,8 @@ public:
 //    void f(const int&... args);
 
     void init(int amount);
+
+    void init(std::initializer_list<float> args);
 //    void init(int ... args1);
     void putBidToDevice(const Bid &bid);
 
@@ -25,7 +28,8 @@ public:
     friend std::ostream& operator<< (std::ostream& os, const DevicesController& arg) {
         os << "Devices:\n";
         for(auto it = arg._devices.begin(); it != arg._devices.end(); ++it) {
-            os << (*it).getTime() << "\n";
+            os << "Dev T: " << (*it).getTime() << " Bid T: " << (*it).getBid().getTime()
+               << " Bid S: " << (*it).getBid().getSource() << "\n";
         }
 
         return os;

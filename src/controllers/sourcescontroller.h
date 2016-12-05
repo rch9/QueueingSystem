@@ -4,6 +4,7 @@
 #include "../timeableClasses/source.h"
 #include "ostream"
 #include <list>
+#include <initializer_list>
 
 // Надо потом отнаследовать init
 
@@ -13,7 +14,7 @@ public:
     SourcesController();
 
     void init(const int &amount);
-
+    void init(std::initializer_list<float> args);
     /**
      * @brief pullBid
      * @return

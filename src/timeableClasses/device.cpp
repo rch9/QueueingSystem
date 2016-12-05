@@ -13,8 +13,13 @@ void Device::putBid(Bid bid) {
     addServiceTime();
 }
 
-void Device::free() {
-    _time = 0.f;
+void Device::freeBid() {
+    Bid bid;
+    _bid = bid;
+}
+
+const Bid &Device::getBid() const {
+    return _bid;
 }
 
 float Device::distributionLaw() {
