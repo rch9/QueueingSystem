@@ -19,9 +19,9 @@ void Layer::init() {
 }
 
 bool Layer::run() {
-//    cout << _sourceController << endl;
+    cout << _sourceController << endl;
 //    cout << _buffer << endl;
-//    cout << _deviceController << endl;
+    cout << _deviceController << endl;
     cout << endl << "======================" << endl;
 
     while (Director::getInstance()->getTime() < _workTime) {
@@ -34,6 +34,8 @@ bool Layer::run() {
 
         } else {
 
+            cout << "***\n" << Director::getInstance()->getTime() << "\n***";
+
             if (deviceTime != 0.f) {
                 Director::getInstance()->setTime(deviceTime);
             }
@@ -42,9 +44,9 @@ bool Layer::run() {
 
         _deviceController.freeReadyDevices();
 
-//        cout << _sourceController << endl;
+        cout << _sourceController << endl;
 //        cout << _buffer << endl;
-//        cout << _deviceController << endl;
+        cout << _deviceController << endl;
         cout << endl << "======================" << endl;
     }
 
