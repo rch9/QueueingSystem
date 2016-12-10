@@ -7,5 +7,5 @@ Controller::Controller():
 }
 
 void Controller::addServiceTime() {
-    _time = Director::getInstance().getTime() + distributionLaw();
+    _time = Director::getInstance()->getTime() + distributionLaw();
 }

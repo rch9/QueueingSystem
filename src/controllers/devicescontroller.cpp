@@ -37,9 +37,9 @@ float DevicesController::getMinDeviceTime() const {
 
 void DevicesController::freeReadyDevices() {
     for(auto it = _devices.begin(); it != _devices.end(); ++it) {
-        if ((*it).getTime() < Director::getInstance().getTime()) {
+        if ((*it).getTime() < Director::getInstance()->getTime()) {
             if ((*it).getBid().getSource() != -1) {
-                std::cout << "free dev T: " << (*it).getTime() << " bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance().getTime() << std::endl;
+                std::cout << "free dev T: " << (*it).getTime() << " bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance()->getTime() << std::endl;
                 (*it).freeBid();
             }
         }

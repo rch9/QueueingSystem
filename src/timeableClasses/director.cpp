@@ -1,10 +1,10 @@
 #include "director.h"
 #include <iostream>
 
-Director &Director::getInstance() {
+Director *Director::getInstance() {
     static Director director;
 
-    return director;
+    return &director;
 }
 
 void Director::setTime(const float &time) {
