@@ -7,6 +7,7 @@
 #include "tabsmowidget.h"
 
 class MainWidget : public QWidget {
+Q_OBJECT
 public:
     MainWidget();
     ~MainWidget();
@@ -16,6 +17,10 @@ private:
     TabTableWidget* table;
     TabSMOWidget* smo;
     QTabWidget* tabs;
+    QPushButton* restart;
+
+public slots:
+    void clickRestart();
 
 };
 
