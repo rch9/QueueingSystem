@@ -14,6 +14,7 @@ private:
     TabTableWidget table;
     TabSMOWidget smo;
     QTabWidget tabs;
+
 };
 
 #endif // MAINWIDGET_H

@@ -21,6 +21,10 @@ set(CMAKE_BUILD_TYPE Debug)
 #Qt
 find_package(Qt5Widgets)
 
+#QT5_WRAP_UI(UIS_HDRS
+#    src/forms/mainwindow.ui
+#)
+
 
 # if(${CMAKE_BUILD_TYPE} Debug)
 #     add_executable(main src/main.cpp)
@@ -42,6 +46,7 @@ add_executable(main
     src/ui/tabsmowidget.cpp
     src/ui/mainwidget.cpp
 
+
 #    test/buffer_test.cpp
 #    test/randomHelper_test.cpp
 #    test/source_test.cpp
@@ -55,4 +60,4 @@ add_executable(main
 
 # endif()
 
-target_link_libraries(main -pthread ${PROJECT_LINK_LIBS} Qt5::Widgets Qt5::Core)
+target_link_libraries(main -pthread ${PROJECT_LINK_LIBS} ${UIS_HDRS} Qt5::Widgets Qt5::Core Qt5::Gui -uitools)

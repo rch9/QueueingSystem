@@ -6,7 +6,7 @@ TabTableWidget::TabTableWidget():
     QWidget() {
 
     QPalette Pal;
-    Pal.setColor(QPalette::Background, Qt::black);
+    Pal.setColor(QPalette::Background, Qt::white);
     setPalette(Pal);
 
     resize(600, 400);

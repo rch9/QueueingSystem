@@ -9,7 +9,7 @@ MainWidget::MainWidget():
     QWidget() {
 
     QPalette Pal;
-    Pal.setColor(QPalette::Background, Qt::green);
+    Pal.setColor(QPalette::Background, Qt::black);
     setPalette(Pal);
 
     initMainWidget();

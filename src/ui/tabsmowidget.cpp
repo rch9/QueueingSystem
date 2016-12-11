@@ -5,7 +5,7 @@ TabSMOWidget::TabSMOWidget():
     QWidget() {
 
     QPalette Pal;
-    Pal.setColor(QPalette::Background, Qt::gray);
+    Pal.setColor(QPalette::Background, Qt::white);
     setPalette(Pal);
 
     resize(600, 400);
