@@ -38,6 +38,9 @@ add_executable(main
     src/timeableClasses/director.cpp
     src/controllers/devicescontroller.cpp
     src/controllers/sourcescontroller.cpp
+    src/ui/tabtablewidget.cpp
+    src/ui/tabsmowidget.cpp
+    src/ui/mainwidget.cpp
 
 #    test/buffer_test.cpp
 #    test/randomHelper_test.cpp

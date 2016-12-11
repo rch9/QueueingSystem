@@ -5,8 +5,8 @@
 #include <iostream>
 #include <QApplication>
 #include <QtWidgets>
-#include "QStandardItemModel"
-#include "QStandardItem"
+#include "ui/mainwidget.h"
+
 
 int main(int argc, char *argv[]) {
     //    ::testing::InitGoogleTest(&argc, argv);
@@ -15,33 +15,36 @@ int main(int argc, char *argv[]) {
 //    layer.run();
 
     QApplication app(argc, argv);
+    MainWidget widget;
 
-    QTabWidget tab;
+    widget.show();
 
-    QPalette Pal;
+//    QTabWidget tab;
 
-    // устанавливаем цвет фона
-    Pal.setColor(QPalette::Background, Qt::black);
+//    QPalette Pal;
 
-
-    QWidget window1, window2;
-
-    tab.resize(600, 600);
-    window1.resize(600, 400);
-    window2.resize(600, 400);
-
-    window1.setAutoFillBackground(true);
-    window1.setPalette(Pal);
-    window1.setFixedHeight(400);
-    window2.setAutoFillBackground(true);
-    window2.setPalette(Pal);
-    window2.setFixedHeight(400);
+//    // устанавливаем цвет фона
+//    Pal.setColor(QPalette::Background, Qt::black);
 
 
-    tab.addTab(&window1, "first");
-    tab.addTab(&window2, "second");
+//    QWidget window1, window2;
 
-    tab.show();
+//    tab.resize(600, 600);
+//    window1.resize(600, 400);
+//    window2.resize(600, 400);
+
+//    window1.setAutoFillBackground(true);
+//    window1.setPalette(Pal);
+//    window1.setFixedHeight(400);
+//    window2.setAutoFillBackground(true);
+//    window2.setPalette(Pal);
+//    window2.setFixedHeight(400);
+
+
+//    tab.addTab(&window1, "first");
+//    tab.addTab(&window2, "second");
+
+//    tab.show();
     return app.exec();
     //    return RUN_ALL_TESTS();
 }
