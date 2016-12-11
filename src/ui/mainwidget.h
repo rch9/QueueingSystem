@@ -3,6 +3,7 @@
 #include <QTabWidget>
 #include <QWidget>
 #include <QPushButton>
+#include <QLabel>
 #include "tabtablewidget.h"
 #include "tabsmowidget.h"
 
@@ -18,6 +19,7 @@ private:
     TabSMOWidget* smo;
     QTabWidget* tabs;
     QPushButton* restart;
+    QLabel* label;
 
 public slots:
     void clickRestart();

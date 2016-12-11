@@ -2,7 +2,8 @@
 //#include <QApplication>
 
 TabSMOWidget::TabSMOWidget():
-    QWidget() {
+    QWidget(),
+    label(new QLabel()) {
 
     QPalette Pal;
     Pal.setColor(QPalette::Background, Qt::white);
@@ -11,4 +12,8 @@ TabSMOWidget::TabSMOWidget():
     resize(600, 400);
     setAutoFillBackground(true);
     setFixedSize(600, 400);
+}
+
+void TabSMOWidget::initSMO() {
+
 }

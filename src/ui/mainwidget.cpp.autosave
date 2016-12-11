@@ -10,8 +10,7 @@ MainWidget::MainWidget():
     table(new TabTableWidget()),
     smo(new TabSMOWidget()),
     tabs(new QTabWidget()),
-    restart(new QPushButton(tr("restart"))),
-    label(new QLabel()) {
+    restart(new QPushButton(tr("restart"))) {
 
     initMainWidget();
 
@@ -30,9 +29,7 @@ MainWidget::~MainWidget() {
     delete restart;
 }
 
-void MainWidget::initMainWidget() {
-    label->setParent(smo);
-    label->move(200, 200);
+void MainWidget::initMainWidget() {    
 
     tabs->setParent(this);
     tabs->setFixedSize(600, 400);
