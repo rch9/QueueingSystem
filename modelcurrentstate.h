@@ -15,6 +15,10 @@ public:
     explicit ModelCurrentState(QWidget *parent = 0);
     ~ModelCurrentState();
 
+public slots:
+    void clickRestart();
+
+
 private:
     Ui::ModelCurrentState *ui;
 };

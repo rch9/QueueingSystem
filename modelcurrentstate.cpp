@@ -16,12 +16,24 @@ ModelCurrentState::ModelCurrentState(QWidget *parent) :
     ui->soursesTable->setItem(rows, 1, new QTableWidgetItem("aaaaa"));
     ui->soursesTable->setItem(rows, 2, new QTableWidgetItem("bbbbb"));
     ui->soursesTable->setEnabled(false);
-//    ui->tableWidget->selectRow(0);
-
+    //    ui->tableWidget->selectRow(0);
+    connect(ui->soursesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(clickRestart()));
 
 }
 
 ModelCurrentState::~ModelCurrentState()
 {
     delete ui;
+}
+
+void ModelCurrentState::clickRestart() {
+
+    auto table = ui->soursesTable;
+    table->setRowCount(0);
+
+
+    for (int i = 0; i < ui->soursesSpinBox->value(); ++i) {
+        table->insertRow(i);
+//        table->selectRow(i);
+    }
 }
