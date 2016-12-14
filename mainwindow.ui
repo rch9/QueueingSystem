@@ -13,53 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>401</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <row>
-     <property name="text">
-      <string>Новая строка</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Новая строка</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Новая строка</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Новая строка</string>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Новый столбец</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Новый столбец</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Новый столбец</string>
-     </property>
-    </column>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>

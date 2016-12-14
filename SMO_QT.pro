@@ -14,14 +14,10 @@ TARGET = SMO_QT
 TEMPLATE = app
 
 
-SOURCES += *.cpp\
-#        controllers/*.cpp\
-#        timeableClasses/*.cpp\
-#        utils/*.cpp\
+SOURCES += *.cpp \
 
-HEADERS  += *.h\
-#        controllers/*.h\
-#        timeableClasses/*.h\
-#        utils/*.h\
+HEADERS  += *.h \
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    modelcurrentstate.ui \
+    resulttable.ui    
