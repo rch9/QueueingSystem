@@ -1,6 +1,7 @@
 #ifndef MODELCURRENTSTATE_H
 #define MODELCURRENTSTATE_H
 
+#include "layer.h"
 #include <QDialog>
 #include <QSpinBox>
 #include <QTableWidget>
@@ -24,6 +25,7 @@ public slots:
 
 private:
     Ui::ModelCurrentState *ui;
+    Layer* _layer;
 
 private:
     void updateTableRows(QTableWidget *table, QSpinBox *spinBox);
