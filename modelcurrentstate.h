@@ -2,6 +2,8 @@
 #define MODELCURRENTSTATE_H
 
 #include <QDialog>
+#include <QSpinBox>
+#include <QTableWidget>
 
 namespace Ui {
 class ModelCurrentState;
@@ -16,11 +18,15 @@ public:
     ~ModelCurrentState();
 
 public slots:
-    void clickRestart();
-
+    void changeSoursesSpinBox();
+    void changeBufferSpinBox();
+    void changeDevisesSpinBox();
 
 private:
     Ui::ModelCurrentState *ui;
+
+private:
+    void updateTableRows(QTableWidget *table, QSpinBox *spinBox);
 };
 
 #endif // MODELCURRENTSTATE_H

@@ -135,17 +135,22 @@
    </property>
    <column>
     <property name="text">
-     <string>№ И</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
      <string>t И</string>
     </property>
    </column>
    <column>
     <property name="text">
      <string>№ З</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>От</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>До</string>
     </property>
    </column>
   </widget>
@@ -192,11 +197,6 @@
    </property>
    <column>
     <property name="text">
-     <string>№ Я.Б</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
      <string>№ И.З</string>
     </property>
    </column>
@@ -230,11 +230,6 @@
    </property>
    <column>
     <property name="text">
-     <string>№ П</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
      <string>t П</string>
     </property>
    </column>
@@ -246,6 +241,11 @@
    <column>
     <property name="text">
      <string>№ З</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Лямбда</string>
     </property>
    </column>
   </widget>
@@ -271,11 +271,6 @@
      <height>421</height>
     </rect>
    </property>
-   <column>
-    <property name="text">
-     <string>№ О</string>
-    </property>
-   </column>
    <column>
     <property name="text">
      <string>№ З</string>
