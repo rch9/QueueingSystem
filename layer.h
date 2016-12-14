@@ -20,6 +20,7 @@ public:
      * @return
      */
     bool run(/*args*/);
+    void step();
 private:
     int _numberOfSources;
     int _numberOfDevices;
