@@ -5,12 +5,15 @@
 #include "sourcescontroller.h"
 #include "buffer.h"
 #include <vector>
+#include <utility>
 
 class Layer {
 public:
-    Layer(int numberOfSources, int numberOfDevices, int bufferSize, float workTime);
+    Layer();
 
-    void init();
+
+    void setSMOAdgs(std::vector<std::pair<float, float>> soursesArgs,
+                    size_t bufferSize, std::vector<float> devisesArgs, float worktime);
 
     /**
      * @brief init and run program

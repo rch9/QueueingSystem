@@ -4,9 +4,9 @@
 SourcesController::SourcesController() {
 }
 
-void SourcesController::init(std::initializer_list<float> args) {
-    for (size_t i = 0; i < args.size(); i += 2) {
-        _sources.push_back(Source(*(args.begin()+i), *(args.begin()+i+1), i / 2));
+void SourcesController::init(std::vector<std::pair<float, float> > args) {
+    for (auto arg : args) {
+        _sources.push_back(Source(arg.first, arg.second, _sources.size()));
         _sources.back().generateBid();
     }
 }

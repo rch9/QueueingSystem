@@ -5,7 +5,7 @@
 //#include <list>
 #include <deque>
 #include <ostream>
-#include <initializer_list>
+#include <vector>
 
 class DevicesController
 {
@@ -13,7 +13,7 @@ public:
     DevicesController();
 
 
-    void init(std::initializer_list<float> args);
+    void init(std::vector<float> args);
     void putBidToDevice(const Bid &bid);
 
     float getMinDeviceTime() const;

@@ -5,6 +5,8 @@
 #include <QDialog>
 #include <QSpinBox>
 #include <QTableWidget>
+#include <vector>
+//#include <string>
 
 namespace Ui {
 class ModelCurrentState;
@@ -18,10 +20,13 @@ public:
     explicit ModelCurrentState(QWidget *parent = 0);
     ~ModelCurrentState();
 
-public slots:
+private slots:
     void changeSoursesSpinBox();
     void changeBufferSpinBox();
     void changeDevisesSpinBox();
+    void pressStart();
+    void pressStep();
+    void pressBack();
 
 private:
     Ui::ModelCurrentState *ui;
@@ -29,6 +34,7 @@ private:
 
 private:
     void updateTableRows(QTableWidget *table, QSpinBox *spinBox);
+    std::vector<float> getColumnFromTable(QTableWidget *table, int n) const;
 };
 
 #endif // MODELCURRENTSTATE_H

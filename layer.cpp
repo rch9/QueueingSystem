@@ -4,18 +4,19 @@
 
 using namespace std;
 
-Layer::Layer(int numberOfSources, int numberOfDevices, int bufferSize, float workTime):
-    _numberOfSources(numberOfSources),
-    _numberOfDevices(numberOfDevices),
-    _bufferSize(bufferSize),
-    _workTime(workTime) {
-    init();
+Layer::Layer():
+    _numberOfSources(0),
+    _numberOfDevices(0),
+    _bufferSize(0),
+    _workTime(0) {
+//    init();
 }
 
-void Layer::init() {
-    _buffer.init(_bufferSize);
-    _sourceController.init({0, 1, 0, 1, 0, 1});
-    _deviceController.init({1, 1});
+void Layer::setSMOAdgs(std::vector<std::pair<float, float> > soursesArgs, size_t bufferSize, std::vector<float> devisesArgs, float worktime) {
+    _sourceController.init(soursesArgs);
+    _buffer.init(bufferSize);
+    _deviceController.init(devisesArgs);
+    _workTime = worktime;
 }
 
 bool Layer::run() {

@@ -4,7 +4,8 @@
 #include "source.h"
 #include "ostream"
 #include <list>
-#include <initializer_list>
+#include <vector>
+#include <utility>
 
 // Надо потом отнаследовать init
 
@@ -13,7 +14,7 @@ class SourcesController
 public:
     SourcesController();
 
-    void init(std::initializer_list<float> args);
+    void init(std::vector<std::pair<float, float>> args);
     /**
      * @brief pullBid
      * @return

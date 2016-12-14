@@ -6,7 +6,7 @@ DevicesController::DevicesController():
     _currentDevice(0) {
 }
 
-void DevicesController::init(std::initializer_list<float> args) {
+void DevicesController::init(std::vector<float> args) {
     _amountDevices = args.size();
     for (auto arg: args) {
         _devices.push_back(Device(arg));
