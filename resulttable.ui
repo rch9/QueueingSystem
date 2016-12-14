@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="soursesSpinBox">
    <property name="geometry">
     <rect>
      <x>860</x>
@@ -22,8 +22,14 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="bufferSpinBox">
    <property name="geometry">
     <rect>
      <x>860</x>
@@ -32,11 +38,17 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>830</x>
+     <x>840</x>
      <y>20</y>
      <width>121</width>
      <height>16</height>
@@ -72,7 +84,7 @@
     <string>Число приборов</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_3">
+  <widget class="QSpinBox" name="devisesSpinBox">
    <property name="geometry">
     <rect>
      <x>860</x>
@@ -81,8 +93,17 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
+   <property name="value">
+    <number>1</number>
+   </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
      <x>850</x>
@@ -95,7 +116,7 @@
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
      <x>850</x>
@@ -108,7 +129,7 @@
     <string>Начать</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="exitButton">
    <property name="geometry">
     <rect>
      <x>850</x>
@@ -121,7 +142,7 @@
     <string>Выход</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTableWidget" name="resultTable">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -146,59 +167,17 @@
     </property>
    </column>
   </widget>
-  <widget class="QTableWidget" name="tableWidget_2">
+  <widget class="QTableWidget" name="sourcesTable">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>570</y>
+     <y>540</y>
      <width>941</width>
-     <height>61</height>
+     <height>81</height>
     </rect>
    </property>
-   <row>
-    <property name="text">
-     <string>Лямбда</string>
-    </property>
-   </row>
-   <column>
-    <property name="text">
-     <string>И0</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>И1</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>И2</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>И3</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>И4</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>И5</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>440</y>
-     <width>941</width>
-     <height>121</height>
-    </rect>
+   <property name="columnCount">
+    <number>1</number>
    </property>
    <row>
     <property name="text">
@@ -210,36 +189,32 @@
      <string>До</string>
     </property>
    </row>
-   <column>
+   <column/>
+  </widget>
+  <widget class="QTableWidget" name="devicesTable">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>460</y>
+     <width>941</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="columnCount">
+    <number>1</number>
+   </property>
+   <row>
     <property name="text">
-     <string>П0</string>
+     <string>Лямбда</string>
     </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>П1</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>П2</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>П3</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>П4</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>П5</string>
-    </property>
-   </column>
+   </row>
+   <column/>
   </widget>
  </widget>
  <resources/>

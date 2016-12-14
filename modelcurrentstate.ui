@@ -61,6 +61,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -84,6 +90,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
@@ -106,6 +118,12 @@
      <width>47</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
    </property>
   </widget>
   <widget class="QPushButton" name="stepButton">
@@ -133,6 +151,10 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
+   <property name="rowCount">
+    <number>1</number>
+   </property>
+   <row/>
    <column>
     <property name="text">
      <string>t И</string>
@@ -195,6 +217,10 @@
    <property name="inputMethodHints">
     <set>Qt::ImhNone</set>
    </property>
+   <property name="rowCount">
+    <number>1</number>
+   </property>
+   <row/>
    <column>
     <property name="text">
      <string>№ И.З</string>
@@ -228,6 +254,10 @@
      <height>171</height>
     </rect>
    </property>
+   <property name="rowCount">
+    <number>1</number>
+   </property>
+   <row/>
    <column>
     <property name="text">
      <string>t П</string>
