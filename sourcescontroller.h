@@ -9,12 +9,6 @@
 
 // Надо потом отнаследовать init
 
-class SourceControllerData
-{
-public:
-    SourceControllerData() {}
-};
-
 class SourcesController
 {
 public:
