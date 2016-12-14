@@ -6,7 +6,8 @@
 
 ModelCurrentState::ModelCurrentState(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ModelCurrentState)
+    ui(new Ui::ModelCurrentState),
+    _layer(new Layer)
 {
     ui->setupUi(this);
 
@@ -26,6 +27,7 @@ ModelCurrentState::ModelCurrentState(QWidget *parent) :
 ModelCurrentState::~ModelCurrentState()
 {
     delete ui;
+    delete _layer;
 }
 
 void ModelCurrentState::changeSoursesSpinBox() {
