@@ -46,15 +46,20 @@ void ModelCurrentState::changeDevisesSpinBox() {
 }
 
 void ModelCurrentState::pressStart() {
-//    std::cout << "adadadda\n";
-//    ui->soursesTable->setSelectionBehavior(QAbstractItemView::SelectColumns);
-//    ui->soursesTable->col
-//    _layer->setSMOAdgs();
-    getColumnFromTable(ui->soursesTable, 1);
+    std::vector<std::pair<float, float>> vectPair;
+    auto vect1 = getColumnFromTable(ui->soursesTable, 2);
+    auto vect2 = getColumnFromTable(ui->soursesTable, 3);
+
+
+    for(size_t i = 0; i < vect1.size(); ++i) {
+        vectPair.push_back(std::make_pair(vect1.at(i), vect2.at(i)));
+    }
+
+    _layer->setSMOAdgs(vectPair, ui->bufferSpinBox->text().toInt(), getColumnFromTable(ui->devicesTable, 3), 10.f);
 }
 
 void ModelCurrentState::pressStep() {
-
+    _layer->run();
 }
 
 void ModelCurrentState::pressBack() {
@@ -76,4 +81,6 @@ std::vector<float> ModelCurrentState::getColumnFromTable(QTableWidget *table, in
     for(int i = 0; i < table->rowCount(); ++i) {
         resultVect.push_back(table->item(i, n)->text().toFloat());
     }
+
+    return resultVect;
 }
