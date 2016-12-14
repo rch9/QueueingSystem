@@ -131,7 +131,7 @@
     </rect>
    </property>
    <property name="autoFillBackground">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <column>
     <property name="text">
@@ -183,6 +183,12 @@
      <width>601</width>
      <height>171</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhNone</set>
    </property>
    <column>
     <property name="text">
