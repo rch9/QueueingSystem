@@ -3,13 +3,14 @@
 #include "modelcurrentstate.h"
 #include "layer.h"
 #include <QApplication>
+#include "source.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    ModelCurrentState w;
+//    ModelCurrentState w;
 
-    w.show();
+//    w.show();
 
     return a.exec();
 }
+

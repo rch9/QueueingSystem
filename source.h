@@ -13,9 +13,11 @@ public:
 private:
     float distributionLaw();
 private:
+    Bid _bid;
     float _first;
     float _second;
     int _number;
+    int _bidNumber;
 };
 
 #endif // SOURCE_H
