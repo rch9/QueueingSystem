@@ -50,3 +50,7 @@ void DevicesController::moveDevicePointer() {
         _currentDevice = 0;
     }
 }
+
+const std::deque<Device> &DevicesController::getDevices() const {
+    return _devices;
+}

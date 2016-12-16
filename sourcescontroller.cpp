@@ -29,3 +29,7 @@ float SourcesController::getMinSourceTime() {
 Bid SourcesController::pullMinSourceBid() {
     return pullMinSource().generateBid();
 }
+
+const std::list<Source> &SourcesController::getSources() const {
+    return _sources;
+}

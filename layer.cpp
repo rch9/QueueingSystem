@@ -62,8 +62,35 @@ StatisticsInfoManager *StatisticsInfoManager::getInstance() {
     return &instance;
 }
 
-void StatisticsInfoManager::setInfo(const SourcesController &sourcesController, const Buffer &bufferInfo, const DevicesController &devicesController) {
+void StatisticsInfoManager::setInfo(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController) {
+    auto sourses = sourcesController.getSources();
+    auto bufferBids = buffer.getBids();
+    auto devices = devicesController.getDevices();
 
+    for (auto s : sourses) {
+        _soursesInfo.push_back(std::make_tuple(s.getTime(), s.getBidNumber()));
+    }
+
+    for (auto b : bufferBids) {
+        _bufferInfo.push_back(std::make_tuple(b.getSource(), b.getNumber()));
+    }
+
+    for (auto d : devices) {
+        _devicesInfo.push_back(std::make_tuple(d.getTime(), d.getBid().getSource(), d.getBid().getNumber()));
+    }
+
+}
+
+const std::vector<std::tuple<float, int> > &StatisticsInfoManager::getSourcesInfo() const {
+    return _soursesInfo;
+}
+
+const std::vector<std::tuple<int, int> > &StatisticsInfoManager::getBufferInfo() const {
+    return _bufferInfo;
+}
+
+const std::vector<std::tuple<float, int, int> > &StatisticsInfoManager::getDevicesInfo() const {
+    return _devicesInfo;
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {

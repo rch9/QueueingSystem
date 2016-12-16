@@ -6,12 +6,22 @@
 #include "buffer.h"
 #include <vector>
 #include <utility>
+#include <tuple>
 
 class StatisticsInfoManager {
 public:
     StatisticsInfoManager *getInstance();
 
-    void setInfo(const SourcesController &sourcesController, const Buffer &bufferInfo, const DevicesController &devicesController);
+    void setInfo(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController);
+
+    const std::vector<std::tuple<float, int>> &getSourcesInfo() const;
+    const std::vector<std::tuple<int, int>> &getBufferInfo() const;
+    const std::vector<std::tuple<float, int, int>> &getDevicesInfo() const;
+
+private:
+    std::vector<std::tuple<float, int>> _soursesInfo;
+    std::vector<std::tuple<int, int>> _bufferInfo;
+    std::vector<std::tuple<float, int, int>> _devicesInfo;
 
 private:
     StatisticsInfoManager();
@@ -30,6 +40,7 @@ public:
      * @return
      */
     bool run(/*args*/);
+    void step();
 
 private:
     int _numberOfSources;

@@ -34,3 +34,7 @@ Bid Buffer::popBid() {
 unsigned Buffer::size() {
     return _bids.size();
 }
+
+const std::list<Bid> &Buffer::getBids() const {
+    return _bids;
+}

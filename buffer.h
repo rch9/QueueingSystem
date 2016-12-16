@@ -5,9 +5,12 @@
 #include <list>
 #include <ostream>
 
+class StatisticsInfoManager;
+
 class Buffer {
+    friend class StatisticsInfoManager;
 public:
-//    Buffer(int maxSize);
+    //    Buffer(int maxSize);
     Buffer();
 
     void init(int maxSize);
@@ -25,6 +28,9 @@ public:
 
         return os;
     }
+
+private:
+    const std::list<Bid> &getBids() const;
 
 private:
     std::list<Bid> _bids;

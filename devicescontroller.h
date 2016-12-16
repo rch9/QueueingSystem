@@ -7,8 +7,10 @@
 #include <ostream>
 #include <vector>
 
-class DevicesController
-{
+class StatisticsInfoManager;
+
+class DevicesController {
+    friend class StatisticsInfoManager;
 public:
     DevicesController();
 
@@ -32,7 +34,7 @@ public:
 
 private:
     void moveDevicePointer();
-
+    const std::deque<Device> &getDevices() const;
 private:
     std::deque<Device> _devices;
     int _currentDevice;

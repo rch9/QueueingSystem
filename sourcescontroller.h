@@ -9,9 +9,11 @@
 
 // Надо потом отнаследовать init
 
-class SourcesController
-{
-public:
+class StatisticsInfoManager;
+
+class SourcesController {
+    friend class StatisticsInfoManager;
+public:    
     SourcesController();
 
     void init(std::vector<std::pair<float, float>> args);
@@ -34,8 +36,12 @@ public:
         return os;
     }
 
+
 private:
-    std::list<Source> _sources;
+    const std::list<Source> &getSources() const;
+
+private:
+    std::list<Source> _sources;    
 };
 
 
