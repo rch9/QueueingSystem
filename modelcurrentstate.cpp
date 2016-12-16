@@ -3,6 +3,7 @@
 #include <QTableWidgetItem>
 #include <iostream>
 
+#include "layer.h"
 
 ModelCurrentState::ModelCurrentState(QWidget *parent) :
     QDialog(parent),
@@ -24,6 +25,13 @@ ModelCurrentState::ModelCurrentState(QWidget *parent) :
     connect(ui->startButton, SIGNAL(pressed()), this, SLOT(pressStart()));
     connect(ui->stepButton, SIGNAL(pressed()), this, SLOT(pressStep()));
     connect(ui->backButton, SIGNAL(pressed()), this, SLOT(pressBack()));
+
+    auto statisticsManager = StatisticsInfoManager::getInstance();
+
+//    statisticsManager->getDevicesInfo()
+
+    ui->soursesTable->setItem(0, 1, new QTableWidgetItem(statisticsManager->getSourcesInfo().at(1).at(1).c_str()));
+
 }
 
 ModelCurrentState::~ModelCurrentState()

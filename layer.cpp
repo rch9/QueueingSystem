@@ -49,6 +49,8 @@ bool Layer::run() {
         cout << endl << "======================" << endl;
     }
 
+    StatisticsInfoManager::getInstance()->setInfo(_sourceController, _buffer, _deviceController);
+
     return true;
 }
 
@@ -68,28 +70,30 @@ void StatisticsInfoManager::setInfo(const SourcesController &sourcesController, 
     auto devices = devicesController.getDevices();
 
     for (auto s : sourses) {
-        _soursesInfo.push_back(std::make_tuple(s.getTime(), s.getBidNumber()));
+        _soursesInfo.push_back({std::to_string(s.getTime()), std::to_string(s.getBidNumber())});
     }
 
     for (auto b : bufferBids) {
-        _bufferInfo.push_back(std::make_tuple(b.getSource(), b.getNumber()));
+        _bufferInfo.push_back({std::to_string(b.getSource()), std::to_string(b.getNumber())});
+//        _bufferInfo.push_back(std::make_tuple(b.getSource(), b.getNumber()));
     }
 
     for (auto d : devices) {
-        _devicesInfo.push_back(std::make_tuple(d.getTime(), d.getBid().getSource(), d.getBid().getNumber()));
+        _devicesInfo.push_back({std::to_string(d.getTime()), std::to_string(d.getBid().getSource()), std::to_string(d.getBid().getNumber())});
+//        _devicesInfo.push_back(std::make_tuple(d.getTime(), d.getBid().getSource(), d.getBid().getNumber()));
     }
 
 }
 
-const std::vector<std::tuple<float, int> > &StatisticsInfoManager::getSourcesInfo() const {
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getSourcesInfo() const {
     return _soursesInfo;
 }
 
-const std::vector<std::tuple<int, int> > &StatisticsInfoManager::getBufferInfo() const {
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getBufferInfo() const {
     return _bufferInfo;
 }
 
-const std::vector<std::tuple<float, int, int> > &StatisticsInfoManager::getDevicesInfo() const {
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getDevicesInfo() const {
     return _devicesInfo;
 }
 

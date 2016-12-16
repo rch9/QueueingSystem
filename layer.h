@@ -7,21 +7,23 @@
 #include <vector>
 #include <utility>
 #include <tuple>
+#include <string>
 
 class StatisticsInfoManager {
+    typedef std::vector<std::vector<std::string>> vect_str;
 public:
-    StatisticsInfoManager *getInstance();
+    static StatisticsInfoManager *getInstance();
 
     void setInfo(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController);
 
-    const std::vector<std::tuple<float, int>> &getSourcesInfo() const;
-    const std::vector<std::tuple<int, int>> &getBufferInfo() const;
-    const std::vector<std::tuple<float, int, int>> &getDevicesInfo() const;
+    const vect_str &getSourcesInfo() const;
+    const vect_str &getBufferInfo() const;
+    const vect_str &getDevicesInfo() const;
 
 private:
-    std::vector<std::tuple<float, int>> _soursesInfo;
-    std::vector<std::tuple<int, int>> _bufferInfo;
-    std::vector<std::tuple<float, int, int>> _devicesInfo;
+    vect_str _soursesInfo;
+    vect_str _bufferInfo;
+    vect_str _devicesInfo;
 
 private:
     StatisticsInfoManager();

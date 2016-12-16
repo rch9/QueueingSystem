@@ -6,10 +6,6 @@
 #include "source.h"
 
 int main(int argc, char *argv[]) {
-//    QApplication a(argc, argv);
-//    ModelCurrentState w;
-
-//    w.show();
 
     Layer layer;
 
@@ -21,7 +17,12 @@ int main(int argc, char *argv[]) {
     layer.setSMOAdgs(soursesArgs, bufferSize, devisesArgs, worktime);
     layer.run();
 
-    return 0;
-//    return a.exec();
+    QApplication a(argc, argv);
+    ModelCurrentState w;
+
+    w.show();
+
+//    return 0;
+    return a.exec();
 }
 
