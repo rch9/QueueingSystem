@@ -30,7 +30,7 @@ ModelCurrentState::ModelCurrentState(QWidget *parent) :
 
 //    statisticsManager->getDevicesInfo()
 
-    ui->soursesTable->setItem(0, 1, new QTableWidgetItem(statisticsManager->getSourcesInfo().at(1).at(1).c_str()));
+    ui->soursesTable->setItem(0, 1, new QTableWidgetItem(statisticsManager->getSourcesStatistic().at(0).at(0).c_str()));
 
 }
 

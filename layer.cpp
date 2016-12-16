@@ -49,7 +49,7 @@ bool Layer::run() {
         cout << endl << "======================" << endl;
     }
 
-    StatisticsInfoManager::getInstance()->setInfo(_sourceController, _buffer, _deviceController);
+    StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
 
     return true;
 }
@@ -64,7 +64,7 @@ StatisticsInfoManager *StatisticsInfoManager::getInstance() {
     return &instance;
 }
 
-void StatisticsInfoManager::setInfo(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController) {
+void StatisticsInfoManager::setStatistic(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController) {
     auto sourses = sourcesController.getSources();
     auto bufferBids = buffer.getBids();
     auto devices = devicesController.getDevices();
@@ -85,15 +85,15 @@ void StatisticsInfoManager::setInfo(const SourcesController &sourcesController, 
 
 }
 
-const StatisticsInfoManager::vect_str &StatisticsInfoManager::getSourcesInfo() const {
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getSourcesStatistic() const {
     return _soursesInfo;
 }
 
-const StatisticsInfoManager::vect_str &StatisticsInfoManager::getBufferInfo() const {
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getBufferStatistic() const {
     return _bufferInfo;
 }
 
-const StatisticsInfoManager::vect_str &StatisticsInfoManager::getDevicesInfo() const {
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getDevicesStatistic() const {
     return _devicesInfo;
 }
 

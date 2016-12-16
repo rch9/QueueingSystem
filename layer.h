@@ -14,11 +14,12 @@ class StatisticsInfoManager {
 public:
     static StatisticsInfoManager *getInstance();
 
-    void setInfo(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController);
+    void setStatistic(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController);
+    void setInfo();
 
-    const vect_str &getSourcesInfo() const;
-    const vect_str &getBufferInfo() const;
-    const vect_str &getDevicesInfo() const;
+    const vect_str &getSourcesStatistic() const;
+    const vect_str &getBufferStatistic() const;
+    const vect_str &getDevicesStatistic() const;
 
 private:
     vect_str _soursesInfo;
