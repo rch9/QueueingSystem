@@ -7,6 +7,16 @@
 #include <vector>
 #include <utility>
 
+class StatisticsInfoManager {
+public:
+    StatisticsInfoManager *getInstance();
+
+    void setInfo(const SourcesController &sourcesController, const Buffer &bufferInfo, const DevicesController &devicesController);
+
+private:
+    StatisticsInfoManager();
+};
+
 class Layer {
 public:
     Layer();
@@ -20,6 +30,7 @@ public:
      * @return
      */
     bool run(/*args*/);
+
 private:
     int _numberOfSources;
     int _numberOfDevices;

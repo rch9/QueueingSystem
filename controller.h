@@ -20,13 +20,19 @@ public:
 
 //    const bool &isFree();
 
-protected:
+//    const Bid *getBid() const;
+//    void freeController();
+//    const bool &isFree() const;
+
+
+protected:    
     void addServiceTime();
     virtual float distributionLaw() = 0;
 protected:
-//    float _maxTime;
 //    Bid _bid;
 //    bool _isFree;
+//    float _maxTime;
+//    Bid _bid;    
 };
 
 #endif // CONTROLLER_H

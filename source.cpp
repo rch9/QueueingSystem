@@ -18,6 +18,10 @@ Bid Source::generateBid() {
     return bid;
 }
 
+const int &Source::getBidNumber() const {
+    return _bidNumber;
+}
+
 float Source::distributionLaw() {
     return RandomHelper::rand_uniform(_first, _second);
 }

@@ -13,7 +13,6 @@ public:
     Bid();
     ~Bid();
     const int &getSource() const;
-
     const int &getNumber() const;
 
 private:

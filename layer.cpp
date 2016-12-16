@@ -51,3 +51,20 @@ bool Layer::run() {
 
     return true;
 }
+
+void Layer::step() {
+
+}
+
+StatisticsInfoManager *StatisticsInfoManager::getInstance() {
+    static StatisticsInfoManager instance;
+
+    return &instance;
+}
+
+void StatisticsInfoManager::setInfo(const SourcesController &sourcesController, const Buffer &bufferInfo, const DevicesController &devicesController) {
+
+}
+
+StatisticsInfoManager::StatisticsInfoManager() {
+}
