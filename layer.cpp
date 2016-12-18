@@ -55,7 +55,24 @@ bool Layer::run() {
 }
 
 void Layer::step() {
+    float deviceTime = _deviceController.getMinDeviceTime();
+    float sourceTime = _sourceController.getMinSourceTime();
 
+    if (!_buffer.size() || sourceTime < deviceTime) {
+        Director::getInstance().setTime(sourceTime);
+        _buffer.putBid(_sourceController.pullMinSourceBid());
+
+    } else {
+
+        if (deviceTime != 0.f) {
+            Director::getInstance().setTime(deviceTime);
+        }
+        _deviceController.putBidToDevice(_buffer.popBid());
+    }
+
+    _deviceController.freeReadyDevices();
+
+    StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
 }
 
 StatisticsInfoManager *StatisticsInfoManager::getInstance() {
@@ -65,6 +82,10 @@ StatisticsInfoManager *StatisticsInfoManager::getInstance() {
 }
 
 void StatisticsInfoManager::setStatistic(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController) {
+    _soursesInfo.clear();
+    _bufferInfo.clear();
+    _devicesInfo.clear();
+
     auto sourses = sourcesController.getSources();
     auto bufferBids = buffer.getBids();
     auto devices = devicesController.getDevices();

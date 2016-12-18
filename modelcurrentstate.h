@@ -32,6 +32,8 @@ private:
     Ui::ModelCurrentState *ui;
     Layer* _layer;
 
+    void fillTables();
+
 private:
     void updateTableRows(QTableWidget *table, QSpinBox *spinBox);
     std::vector<float> getColumnFromTable(QTableWidget *table, int n) const;

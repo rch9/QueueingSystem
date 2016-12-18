@@ -15,7 +15,7 @@ public:
     static StatisticsInfoManager *getInstance();
 
     void setStatistic(const SourcesController &sourcesController, const Buffer &buffer, const DevicesController &devicesController);
-    void setInfo();
+//    void setInfo();
 
     const vect_str &getSourcesStatistic() const;
     const vect_str &getBufferStatistic() const;
