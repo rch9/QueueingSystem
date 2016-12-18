@@ -50,6 +50,8 @@ void ModelCurrentState::pressStart() {
     }
 
     _layer->setSMOAdgs(vectPair, ui->bufferSpinBox->text().toInt(), getColumnFromTable(ui->devicesTable, 3), 10.f);
+    _layer->run();
+    fillTables();
 }
 
 void ModelCurrentState::pressStep() {
@@ -62,7 +64,7 @@ void ModelCurrentState::pressBack() {
 
 }
 
-// не менять размеры в ходе работы
+// pivate methods
 void ModelCurrentState::fillTables() {
 
     auto context = StatisticsInfoManager::getInstance();
