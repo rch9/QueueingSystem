@@ -55,7 +55,8 @@ void ModelCurrentState::pressStart() {
 }
 
 void ModelCurrentState::pressStep() {
-//    _layer->run();
+//    _layer->run();    
+    ui->bufferTable->clearContents();
     _layer->step();
     fillTables();
 }

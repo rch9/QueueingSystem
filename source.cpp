@@ -10,9 +10,9 @@ Source::Source(float first, float second, int number):
     addServiceTime();
 }
 
-Bid Source::generateBid() {
-    ++_bidNumber;
+Bid Source::generateBid() {    
     Bid bid(_time, _number, _bidNumber);
+    ++_bidNumber;
     addServiceTime();
 
     return bid;
