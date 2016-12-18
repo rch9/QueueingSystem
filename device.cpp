@@ -1,6 +1,7 @@
 #include "device.h"
 #include "randomhelper.h"
 #include "layer.h"
+#include "director.h"
 
 Device::Device(float lambda, int number):
     Controller(number),
@@ -8,13 +9,16 @@ Device::Device(float lambda, int number):
 }
 
 void Device::putBid(Bid bid) {
-    _bid = bid;
-    StatisticsInfoManager::getInstance()->addedBidToDevice(bid);
+    _bid = bid;    
+    _bid.setInDeviceStartTime(Director::getInstance()->getTime());
+    StatisticsInfoManager::getInstance()->addedBidToDevice(_bid);
     addServiceTime();
 }
 
 void Device::freeBid() {
     Bid bid;
+    _bid.setInSystemTime(_time);
+    StatisticsInfoManager::getInstance()->addedDoneBid(_bid, _number);
     _bid = bid;
 }
 

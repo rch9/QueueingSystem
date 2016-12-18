@@ -28,8 +28,8 @@ public:
 
 // собирают статистику
     void addedFailureBid(const Bid &bid);
-    void addedBidToBuffer(const Bid& bid);
-    void addedBidToDevice(const Bid& bid);
+    void addedBidToBuffer(const Bid &bid);
+    void addedBidToDevice(const Bid &bid);
     void addedDoneBid(const Bid &bid, const int &deviceNumber);
 
 private:

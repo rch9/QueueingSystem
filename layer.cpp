@@ -122,22 +122,31 @@ const StatisticsInfoManager::vect_str &StatisticsInfoManager::getFailureStatisti
     return _failureInfo;
 }
 
+
 void StatisticsInfoManager::addedFailureBid(const Bid &bid) {
+//    (*bid).setInSystemTime(Director::getInstance()->getTime());
     _failure.push_back(bid);
-    _failureInfo.push_back({ std::to_string(bid.getSource()), std::to_string(bid.getNumber()) });
+    _failureInfo.push_back({ std::to_string((bid).getSource()), std::to_string((bid).getNumber()) });
     std::cout << "\nadded to failure: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
 }
 
-void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {    
-    std::cout << "\nadded to buffer: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+// не нужно
+void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {
+//    (*bid).setInBufferStartTime(Director::getInstance()->getTime());
+    std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
 }
 
 void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {
-    std::cout << "\nadded to device: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+//    (*bid).setInDeviceStartTime(Director::getInstance()->getTime());
+    std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
 }
 
 void StatisticsInfoManager::addedDoneBid(const Bid &bid, const int &deviceNumber) {
-    std::cout << "\nadded to done: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+//    std::cout << "\ndev: " << (*bid).getInDeviceStartTime();
+//    std::cout << "\nt: " << (*bid).getInDeviceStartTime();
+//    std::cout << "\nsys: " << (*bid).getInSystemTime();
+    std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
+    std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {
