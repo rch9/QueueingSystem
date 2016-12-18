@@ -55,8 +55,7 @@ void ModelCurrentState::pressStart() {
 }
 
 void ModelCurrentState::pressStep() {
-//    _layer->run();    
-    ui->bufferTable->clearContents();
+    //    _layer->run();
     _layer->step();
     fillTables();
 }
@@ -68,11 +67,15 @@ void ModelCurrentState::pressBack() {
 // pivate methods
 void ModelCurrentState::fillTables() {
 
+    ui->bufferTable->clearContents();
+    ui->failureTable->setRowCount(0);
+
     auto context = StatisticsInfoManager::getInstance();
 
     auto sourcesStat = context->getSourcesStatistic();
     auto bufferStat  = context->getBufferStatistic();
     auto devicesStat = context->getDevicesStatistic();
+    auto failureStat = context->getFailureStatistic();
 
     for (int i = 0; i < sourcesStat.size(); ++i) {
         ui->soursesTable->setItem(i, 0, new QTableWidgetItem(sourcesStat.at(i).at(0).c_str()));
@@ -88,6 +91,13 @@ void ModelCurrentState::fillTables() {
         ui->devicesTable->setItem(i, 0, new QTableWidgetItem(devicesStat.at(i).at(0).c_str()));
         ui->devicesTable->setItem(i, 1, new QTableWidgetItem(devicesStat.at(i).at(1).c_str()));
         ui->devicesTable->setItem(i, 2, new QTableWidgetItem(devicesStat.at(i).at(2).c_str()));
+    }
+
+
+    for (int i = 0; i < failureStat.size(); ++i) {
+        ui->failureTable->insertRow(i);
+        ui->failureTable->setItem(i, 0, new QTableWidgetItem(failureStat.at(i).at(0).c_str()));
+        ui->failureTable->setItem(i, 1, new QTableWidgetItem(failureStat.at(i).at(1).c_str()));
     }
 }
 

@@ -20,14 +20,19 @@ public:
     const vect_str &getSourcesStatistic() const;
     const vect_str &getBufferStatistic() const;
     const vect_str &getDevicesStatistic() const;
+    const vect_str &getFailureStatistic() const;
+
+    void addFailure(const Bid &bid);
 
 private:
     vect_str _soursesInfo;
     vect_str _bufferInfo;
     vect_str _devicesInfo;
+    vect_str _failureInfo;
 
 private:
     StatisticsInfoManager();
+    std::vector<Bid> _failure;
 };
 
 class Layer {

@@ -96,12 +96,10 @@ void StatisticsInfoManager::setStatistic(const SourcesController &sourcesControl
 
     for (auto b : bufferBids) {
         _bufferInfo.push_back({std::to_string(b.getSource()), std::to_string(b.getNumber())});
-//        _bufferInfo.push_back(std::make_tuple(b.getSource(), b.getNumber()));
     }
 
     for (auto d : devices) {
         _devicesInfo.push_back({std::to_string(d.getTime()), std::to_string(d.getBid().getSource()), std::to_string(d.getBid().getNumber())});
-//        _devicesInfo.push_back(std::make_tuple(d.getTime(), d.getBid().getSource(), d.getBid().getNumber()));
     }
 
 }
@@ -116,6 +114,15 @@ const StatisticsInfoManager::vect_str &StatisticsInfoManager::getBufferStatistic
 
 const StatisticsInfoManager::vect_str &StatisticsInfoManager::getDevicesStatistic() const {
     return _devicesInfo;
+}
+
+const StatisticsInfoManager::vect_str &StatisticsInfoManager::getFailureStatistic() const {
+    return _failureInfo;
+}
+
+void StatisticsInfoManager::addFailure(const Bid &bid) {
+    _failure.push_back(bid);
+    _failureInfo.push_back({ std::to_string(bid.getSource()), std::to_string(bid.getNumber()) });
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {

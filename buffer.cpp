@@ -1,5 +1,6 @@
 #include "buffer.h"
 #include "devicescontroller.h"
+#include "layer.h"
 
 using namespace std;
 
@@ -12,6 +13,8 @@ void Buffer::init(int maxSize) {
 
 void Buffer::putBid(const Bid &bid) {
     if (_bids.size() == _maxSize) {
+        //отказ
+        StatisticsInfoManager::getInstance()->addFailure(_bids.back());
         _bids.pop_back();
     }
 
