@@ -77,24 +77,24 @@ void ModelCurrentState::fillTables() {
     auto devicesStat = context->getDevicesStatistic();
     auto failureStat = context->getFailureStatistic();
 
-    for (int i = 0; i < sourcesStat.size(); ++i) {
+    for (size_t i = 0; i < sourcesStat.size(); ++i) {
         ui->soursesTable->setItem(i, 0, new QTableWidgetItem(sourcesStat.at(i).at(0).c_str()));
         ui->soursesTable->setItem(i, 1, new QTableWidgetItem(sourcesStat.at(i).at(1).c_str()));
     }
 
-    for (int i = 0; i < bufferStat.size(); ++i) {
+    for (size_t i = 0; i < bufferStat.size(); ++i) {
         ui->bufferTable->setItem(i, 0, new QTableWidgetItem(bufferStat.at(i).at(0).c_str()));
         ui->bufferTable->setItem(i, 1, new QTableWidgetItem(bufferStat.at(i).at(1).c_str()));
     }
 
-    for (int i = 0; i < devicesStat.size(); ++i) {
+    for (size_t i = 0; i < devicesStat.size(); ++i) {
         ui->devicesTable->setItem(i, 0, new QTableWidgetItem(devicesStat.at(i).at(0).c_str()));
         ui->devicesTable->setItem(i, 1, new QTableWidgetItem(devicesStat.at(i).at(1).c_str()));
         ui->devicesTable->setItem(i, 2, new QTableWidgetItem(devicesStat.at(i).at(2).c_str()));
     }
 
 
-    for (int i = 0; i < failureStat.size(); ++i) {
+    for (size_t i = 0; i < failureStat.size(); ++i) {
         ui->failureTable->insertRow(i);
         ui->failureTable->setItem(i, 0, new QTableWidgetItem(failureStat.at(i).at(0).c_str()));
         ui->failureTable->setItem(i, 1, new QTableWidgetItem(failureStat.at(i).at(1).c_str()));

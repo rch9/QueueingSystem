@@ -6,7 +6,7 @@
 class Director : public Timeable
 {
 public:
-    static Director &getInstance();
+    static Director *getInstance();
 
     void setTime(const float &time);        
 private:    

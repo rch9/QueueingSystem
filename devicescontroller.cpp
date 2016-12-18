@@ -9,7 +9,7 @@ DevicesController::DevicesController():
 void DevicesController::init(std::vector<float> args) {
     _amountDevices = args.size();
     for (auto arg: args) {
-        _devices.push_back(Device(arg));
+        _devices.push_back(Device(arg, _devices.size()));
     }
 }
 
@@ -36,9 +36,9 @@ float DevicesController::getMinDeviceTime() const {
 
 void DevicesController::freeReadyDevices() {
     for(auto it = _devices.begin(); it != _devices.end(); ++it) {
-        if ((*it).getTime() < Director::getInstance().getTime()) {
+        if ((*it).getTime() < Director::getInstance()->getTime()) {
             if ((*it).getBid().getSource() != -1) {
-                std::cout << "free dev T: " << (*it).getTime() << " bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance().getTime() << std::endl;
+//                std::cout << "free dev T: " << (*it).getTime() << " bid S: " << (*it).getBid().getSource() << " Dir T: "  << Director::getInstance()->getTime() << std::endl;
                 (*it).freeBid();
             }
         }

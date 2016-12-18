@@ -1,11 +1,11 @@
 #include "source.h"
 #include "randomhelper.h"
+#include "layer.h"
 
 Source::Source(float first, float second, int number):
-    Controller(),
+    Controller(number),
     _first(first),
     _second(second),
-    _number(number),
     _bidNumber(0) {
     addServiceTime();
 }

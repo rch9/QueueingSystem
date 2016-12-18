@@ -11,6 +11,10 @@
 
 class StatisticsInfoManager {
     typedef std::vector<std::vector<std::string>> vect_str;
+
+    //кол-во заявок, отказов, вероятность отказа, время в сист, время в буфере, время обсл
+    typedef std::tuple<int, int, float, float, float, float> source_typle;
+
 public:
     static StatisticsInfoManager *getInstance();
 
@@ -22,17 +26,23 @@ public:
     const vect_str &getDevicesStatistic() const;
     const vect_str &getFailureStatistic() const;
 
-    void addFailure(const Bid &bid);
+// собирают статистику
+    void addedFailureBid(const Bid &bid);
+    void addedBidToBuffer(const Bid& bid);
+    void addedBidToDevice(const Bid& bid);
+    void addedDoneBid(const Bid &bid, const int &deviceNumber);
 
 private:
     vect_str _soursesInfo;
     vect_str _bufferInfo;
     vect_str _devicesInfo;
     vect_str _failureInfo;
+    std::vector<Bid> _failure;
+    std::vector<source_typle> _soursesTable;
+    std::vector<float> _devicesTable;
 
 private:
-    StatisticsInfoManager();
-    std::vector<Bid> _failure;
+    StatisticsInfoManager();        
 };
 
 class Layer {

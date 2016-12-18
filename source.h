@@ -16,8 +16,7 @@ private:
 private:
 //    Bid _bid;
     float _first;
-    float _second;
-    int _number;
+    float _second;    
     int _bidNumber;
 };
 

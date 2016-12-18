@@ -1,15 +1,15 @@
 #include "device.h"
 #include "randomhelper.h"
+#include "layer.h"
 
-Device::Device(float lambda):
-    Controller(),
-    _lambda(lambda) {
-    // наверн стоит убрать
-//    addServiceTime();
+Device::Device(float lambda, int number):
+    Controller(number),
+    _lambda(lambda) {    
 }
 
 void Device::putBid(Bid bid) {
     _bid = bid;
+    StatisticsInfoManager::getInstance()->addedBidToDevice(bid);
     addServiceTime();
 }
 

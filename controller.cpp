@@ -2,22 +2,15 @@
 #include "director.h"
 #include <iostream>
 
-Controller::Controller():
-    Timeable(0.f) {
+Controller::Controller(int number):
+    Timeable(0.f),
+    _number(number) {
 }
 
-//const Bid *Controller::getBid() const {
-//    return _bid;
-//}
-
-//void Controller::freeController() {
-//    _bid = Bid();
-//}
-
-//const bool &Controller::isFree() const {
-//    return _isFree;
-//}
+const int &Controller::getNumber() const {
+    return _number;
+}
 
 void Controller::addServiceTime() {
-    _time = Director::getInstance().getTime() + distributionLaw();
+    _time = Director::getInstance()->getTime() + distributionLaw();
 }

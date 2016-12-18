@@ -14,10 +14,10 @@ void Buffer::init(int maxSize) {
 void Buffer::putBid(const Bid &bid) {
     if (_bids.size() == _maxSize) {
         //отказ
-        StatisticsInfoManager::getInstance()->addFailure(_bids.back());
+        StatisticsInfoManager::getInstance()->addedFailureBid(_bids.back());
         _bids.pop_back();
     }
-
+    StatisticsInfoManager::getInstance()->addedBidToBuffer(bid);
     _bids.push_back(bid);
 }
 

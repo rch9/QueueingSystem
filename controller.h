@@ -14,7 +14,7 @@
 class Controller : public Timeable
 {
 public:
-    Controller();
+    Controller(int number);
 //    void putBid(const Bid &bid);
 //    void popBid();
 
@@ -25,10 +25,13 @@ public:
 //    const bool &isFree() const;
 
 
-protected:    
+    const int &getNumber() const;
+
+protected:
     void addServiceTime();
     virtual float distributionLaw() = 0;
 protected:
+    int _number;
 //    Bid _bid;
 //    bool _isFree;
 //    float _maxTime;

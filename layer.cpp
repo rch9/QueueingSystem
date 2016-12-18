@@ -59,18 +59,20 @@ void Layer::step() {
     float sourceTime = _sourceController.getMinSourceTime();
 
     if (!_buffer.size() || sourceTime < deviceTime) {
-        Director::getInstance().setTime(sourceTime);
+        Director::getInstance()->setTime(sourceTime);
         _buffer.putBid(_sourceController.pullMinSourceBid());
 
     } else {
 
         if (deviceTime != 0.f) {
-            Director::getInstance().setTime(deviceTime);
+            Director::getInstance()->setTime(deviceTime);
         }
         _deviceController.putBidToDevice(_buffer.popBid());
     }
 
     _deviceController.freeReadyDevices();
+
+    std::cout << "\nDirector time: " << Director::getInstance()->getTime() << std::endl << std::endl;
 
     StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
 }
@@ -120,9 +122,22 @@ const StatisticsInfoManager::vect_str &StatisticsInfoManager::getFailureStatisti
     return _failureInfo;
 }
 
-void StatisticsInfoManager::addFailure(const Bid &bid) {
+void StatisticsInfoManager::addedFailureBid(const Bid &bid) {
     _failure.push_back(bid);
     _failureInfo.push_back({ std::to_string(bid.getSource()), std::to_string(bid.getNumber()) });
+    std::cout << "\nadded to failure: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+}
+
+void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {    
+    std::cout << "\nadded to buffer: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+}
+
+void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {
+    std::cout << "\nadded to device: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+}
+
+void StatisticsInfoManager::addedDoneBid(const Bid &bid, const int &deviceNumber) {
+    std::cout << "\nadded to done: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {

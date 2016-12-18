@@ -7,7 +7,7 @@
 
 class Device : public Controller {
 public:
-    Device(float lambda);
+    Device(float lambda, int number);
 
     void putBid(Bid bid);
     void freeBid();
