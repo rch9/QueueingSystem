@@ -151,19 +151,38 @@
      <height>421</height>
     </rect>
    </property>
+   <property name="rowCount">
+    <number>1</number>
+   </property>
+   <row/>
    <column>
     <property name="text">
-     <string>T</string>
+     <string>Nbids</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>M</string>
+     <string>FBids</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>F</string>
+     <string>Pотк</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tsys</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tbuf</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>TDev</string>
     </property>
    </column>
   </widget>

@@ -27,7 +27,8 @@ int main(int argc, char *argv[]) {
     //return 0;
 
     QApplication a(argc, argv);
-    ModelCurrentState w;
+//    ModelCurrentState w;
+    ResultTable w;
 
     w.show();
 

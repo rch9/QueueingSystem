@@ -196,5 +196,40 @@ void StatisticsInfoManager::printStat() {
     cout << endl;
 }
 
+std::vector<int> StatisticsInfoManager::getNBidsTable() const
+{
+    return _NBidsTable;
+}
+
+std::vector<int> StatisticsInfoManager::getFBidsTable() const
+{
+    return _FBidsTable;
+}
+
+std::vector<float> StatisticsInfoManager::getPFTable() const
+{
+    return _PFTable;
+}
+
+std::vector<float> StatisticsInfoManager::getTSysTable() const
+{
+    return _TSysTable;
+}
+
+std::vector<float> StatisticsInfoManager::getTBufTable() const
+{
+    return _TBufTable;
+}
+
+std::vector<float> StatisticsInfoManager::getTDevTable() const
+{
+    return _TDevTable;
+}
+
+std::vector<float> StatisticsInfoManager::getKTable() const
+{
+    return _KTable;
+}
+
 StatisticsInfoManager::StatisticsInfoManager() {
 }
