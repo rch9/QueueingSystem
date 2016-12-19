@@ -32,6 +32,9 @@ public:
         return os;
     }
 
+    void updateFreeDevices(float time);
+
+
 private:
     void moveDevicePointer();
     const std::deque<Device> &getDevices() const;

@@ -26,6 +26,7 @@ public:
     Source &pullMinSource();
     float getMinSourceTime();
     Bid pullMinSourceBid();
+    void initSources();
 
     friend std::ostream& operator<< (std::ostream& os, const SourcesController& arg) {
         os << "Sourses:\n";

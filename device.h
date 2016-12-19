@@ -14,11 +14,18 @@ public:
 
     const Bid &getBid() const;
 
+    const bool &getIsFree() const;
+    void setIsFree(const bool &isFree);
+    void setTime(const float &time);
+
+    void SetDIrtime();
+
 protected:
     float distributionLaw();
 private:
     float _lambda;
     Bid _bid;
+    bool _isFree;
 };
 
 #endif // DEVICE_H

@@ -4,7 +4,10 @@
 #include "controller.h"
 #include "bid.h"
 
+class SourcesController;
+
 class Source : public Controller {
+    friend class SourcesController;
 public:
     Source(float first, float second, int number);
 

@@ -9,7 +9,7 @@ Layer::Layer():
     _numberOfDevices(0),
     _bufferSize(0),
     _workTime(0) {
-//    init();
+    //    init();
 }
 
 void Layer::setSMOAdgs(std::vector<std::pair<float, float> > soursesArgs, size_t bufferSize, std::vector<float> devisesArgs, float worktime) {
@@ -17,37 +17,19 @@ void Layer::setSMOAdgs(std::vector<std::pair<float, float> > soursesArgs, size_t
     _buffer.init(bufferSize);
     _deviceController.init(devisesArgs);
     _workTime = worktime;
+
+    cout << "init: " << endl;
+    cout << _sourceController << endl;
+    cout << _buffer << endl;
+    cout << _deviceController << endl;
+    cout << "\nDirector time: " << Director::getInstance()->getTime() << std::endl << std::endl;
 }
 
 bool Layer::run() {
-//    cout << _sourceController << endl;
-//    cout << _buffer << endl;
-//    cout << _deviceController << endl;
-//    cout << endl << "======================" << endl;
-
-//    while (Director::getInstance().getTime() < _workTime) {
-//        float deviceTime = _deviceController.getMinDeviceTime();
-//        float sourceTime = _sourceController.getMinSourceTime();
-
-//        if (!_buffer.size() || sourceTime < deviceTime) {
-//            Director::getInstance().setTime(sourceTime);
-//            _buffer.putBid(_sourceController.pullMinSourceBid());
-
-//        } else {
-
-//            if (deviceTime != 0.f) {
-//                Director::getInstance().setTime(deviceTime);
-//            }
-//            _deviceController.putBidToDevice(_buffer.popBid());
-//        }
-
-//        _deviceController.freeReadyDevices();
-
-//        cout << _sourceController << endl;
-//        cout << _buffer << endl;
-//        cout << _deviceController << endl;
-//        cout << endl << "======================" << endl;
-//    }
+    //    cout << _sourceController << endl;
+    //    cout << _buffer << endl;
+    //    cout << _deviceController << endl;
+    //    cout << endl << "======================" << endl;
 
     StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
 
@@ -58,21 +40,63 @@ void Layer::step() {
     float deviceTime = _deviceController.getMinDeviceTime();
     float sourceTime = _sourceController.getMinSourceTime();
 
-    if (!_buffer.size() || sourceTime < deviceTime) {
+    if (deviceTime == 0) {
         Director::getInstance()->setTime(sourceTime);
-        _buffer.putBid(_sourceController.pullMinSourceBid());
+        _deviceController.updateFreeDevices(Director::getInstance()->getTime());
+
+        cout << "MIN: " << _deviceController.getMinDeviceTime();
 
     } else {
 
-        if (deviceTime != 0.f) {
-            Director::getInstance()->setTime(deviceTime);
+        cout << "dev in step " << deviceTime << endl;
+        cout << "sou in step " << sourceTime << endl;
+
+        if (sourceTime <= deviceTime) {
+            Director::getInstance()->setTime(sourceTime);
+            _buffer.putBid(_sourceController.pullMinSourceBid());
+
+        } else {
+
+            if (deviceTime != 0.f) {
+                Director::getInstance()->setTime(deviceTime);
+            }
+            _deviceController.putBidToDevice(_buffer.popBid());
         }
-        _deviceController.putBidToDevice(_buffer.popBid());
+
+        _deviceController.freeReadyDevices();
     }
 
-    _deviceController.freeReadyDevices();
 
-    std::cout << "\nDirector time: " << Director::getInstance()->getTime() << std::endl << std::endl;
+    //    _deviceController.freeReadyDevices();
+
+    //    if (deviceTime == sourceTime && deviceTime == 0.f) {
+    //        _sourceController.initSources();
+    //        sourceTime = _sourceController.getMinSourceTime();
+    //        Director::getInstance()->setTime(sourceTime);
+    //        _deviceController.updateFreeDevices();
+    //    } else {
+
+    //        cout << "dev in step " << deviceTime << endl;
+    //        cout << "sou in step " << sourceTime << endl;
+
+    //        if (sourceTime <= deviceTime) {
+    //            Director::getInstance()->setTime(sourceTime);
+    //            _buffer.putBid(_sourceController.pullMinSourceBid());
+
+    //        } else {
+
+    //            if (deviceTime != 0.f) {
+    //                Director::getInstance()->setTime(deviceTime);
+    //            }
+    //            _deviceController.putBidToDevice(_buffer.popBid());
+    //        }
+
+    //        _deviceController.freeReadyDevices();
+    //    }
+//    cout << _sourceController << endl;
+//    cout << _buffer << endl;
+//    cout << _deviceController << endl;
+//    cout << "Director time: " << Director::getInstance()->getTime() << std::endl;
 
     StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
 }
@@ -124,7 +148,7 @@ const StatisticsInfoManager::vect_str &StatisticsInfoManager::getFailureStatisti
 
 
 void StatisticsInfoManager::addedFailureBid(const Bid &bid) {
-//    (*bid).setInSystemTime(Director::getInstance()->getTime());
+    //    (*bid).setInSystemTime(Director::getInstance()->getTime());
     _failure.push_back(bid);
     _failureInfo.push_back({ std::to_string((bid).getSource()), std::to_string((bid).getNumber()) });
     std::cout << "\nadded to failure: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
@@ -132,19 +156,22 @@ void StatisticsInfoManager::addedFailureBid(const Bid &bid) {
 
 // не нужно
 void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {
-//    (*bid).setInBufferStartTime(Director::getInstance()->getTime());
+    //    (*bid).setInBufferStartTime(Director::getInstance()->getTime());
     std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
 }
 
 void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {
-//    (*bid).setInDeviceStartTime(Director::getInstance()->getTime());
+    //    (*bid).setInDeviceStartTime(Director::getInstance()->getTime());
+    std::cout << "\ndev: " << (bid).getInDeviceStartTime();
+    std::cout << "\nt: " << bid.getTime();
+    std::cout << "\nsys: " << (bid).getInSystemTime();
     std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
 }
 
 void StatisticsInfoManager::addedDoneBid(const Bid &bid, const int &deviceNumber) {
-//    std::cout << "\ndev: " << (*bid).getInDeviceStartTime();
-//    std::cout << "\nt: " << (*bid).getInDeviceStartTime();
-//    std::cout << "\nsys: " << (*bid).getInSystemTime();
+    //    std::cout << "\ndev: " << (*bid).getInDeviceStartTime();
+    //    std::cout << "\nt: " << (*bid).getInDeviceStartTime();
+    //    std::cout << "\nsys: " << (*bid).getInSystemTime();
     std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
     std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
 }

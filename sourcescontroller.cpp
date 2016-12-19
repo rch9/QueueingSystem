@@ -7,7 +7,7 @@ SourcesController::SourcesController() {
 void SourcesController::init(std::vector<std::pair<float, float> > args) {
     for (auto arg : args) {
         _sources.push_back(Source(arg.first, arg.second, _sources.size()));
-        _sources.back().generateBid();
+//        _sources.back().generateBid();
     }
 }
 
@@ -28,6 +28,12 @@ float SourcesController::getMinSourceTime() {
 
 Bid SourcesController::pullMinSourceBid() {
     return pullMinSource().generateBid();
+}
+
+void SourcesController::initSources() {
+    for (auto s : _sources) {
+        s.generateBid();
+    }
 }
 
 const std::list<Source> &SourcesController::getSources() const {
