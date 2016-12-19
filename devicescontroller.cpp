@@ -15,18 +15,12 @@ void DevicesController::init(std::vector<float> args) {
 
 void DevicesController::putBidToDevice(const Bid &bid) {
     for (int i = 0; i < _amountDevices; ++i) {
-        if (_devices.at(_currentDevice).getTime() == getMinDeviceTime()) {
+        if (_devices.at(_currentDevice).getIsFree()) {
             _devices.at(_currentDevice).putBid(bid);
             break;
         }
         moveDevicePointer();
     }
-
-//    for (int i = 0; i < _amountDevices; ++i) {
-//        if (_devices.at(i).getIsFree()) {
-//            _devices.at(i).setTime()
-//        }
-//    }
 }
 
 float DevicesController::getMinDeviceTime() const {
@@ -40,26 +34,50 @@ float DevicesController::getMinDeviceTime() const {
     return (*minIt).getTime();
 }
 
-void DevicesController::freeReadyDevices() {
+float DevicesController::getMinBusyDeviceTime() const {
 
-    for (auto device : _devices) {
-        if (device.getIsFree()) {
-//            device.setTime(Director::getInstance()->getTime());
-        } else {
-            if (device.getTime() < Director::getInstance()->getTime()) {
-                device.freeBid();
+    float t = -1.f;
+
+    for(size_t i = 0; i < _devices.size(); ++i) {
+        if (!_devices.at(i).getIsFree()) {
+            if ((t < 0.f) || (t > _devices.at(i).getTime())) {
+                t = _devices.at(i).getTime();
             }
         }
-    }  
+    }
+
+    return t;
 }
 
-void DevicesController::updateFreeDevices(float time) {
-    for(auto device : _devices) {
-        if (device.getIsFree()) {            
-            device.setTime(1111);
-//            std::cout << device.getTime();
+void DevicesController::freeReadyDevices() {
+
+    for(size_t i = 0; i < _devices.size(); ++i) {
+        if (_devices.at(i).getIsFree()) {
+//            device.setTime(Director::getInstance()->getTime());
+        } else {
+            if (_devices.at(i).getTime() <= Director::getInstance()->getTime()) {
+                _devices.at(i).freeBid();
+                std::cout << "\n\nfffffffffff\n\n";
+            }
         }
     }
+
+}
+
+void DevicesController::updateFreeDevices() {
+//    for(auto device : _devices) {
+//        if (device.getIsFree()) {
+//            device.setTime(1111);
+////            std::cout << device.getTime();
+//        }
+//    }
+
+    for(size_t i = 0; i < _devices.size(); ++i) {
+        if(_devices.at(i).getIsFree()) {
+            _devices.at(i).setTime(Director::getInstance()->getTime());
+        }
+    }
+
 }
 
 void DevicesController::moveDevicePointer() {
@@ -70,4 +88,14 @@ void DevicesController::moveDevicePointer() {
 
 const std::deque<Device> &DevicesController::getDevices() const {
     return _devices;
+}
+
+bool DevicesController::hasFreeDevice() const {
+    for (size_t i = 0; i < _devices.size(); ++i) {
+        if (_devices.at(i).getIsFree()) {
+            return true;
+        }
+    }
+
+    return false;
 }

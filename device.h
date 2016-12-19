@@ -3,8 +3,6 @@
 
 #include "controller.h"
 
-
-
 class Device : public Controller {
 public:
     Device(float lambda, int number);
@@ -15,10 +13,8 @@ public:
     const Bid &getBid() const;
 
     const bool &getIsFree() const;
-    void setIsFree(const bool &isFree);
+//    void setIsFree(const bool &isFree);
     void setTime(const float &time);
-
-    void SetDIrtime();
 
 protected:
     float distributionLaw();

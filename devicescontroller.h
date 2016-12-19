@@ -19,6 +19,7 @@ public:
     void putBidToDevice(const Bid &bid);
 
     float getMinDeviceTime() const;
+    float getMinBusyDeviceTime() const;
 
     void freeReadyDevices();
 
@@ -32,8 +33,9 @@ public:
         return os;
     }
 
-    void updateFreeDevices(float time);
+    void updateFreeDevices();
 
+    bool hasFreeDevice() const;
 
 private:
     void moveDevicePointer();
@@ -41,7 +43,7 @@ private:
 private:
     std::deque<Device> _devices;
     int _currentDevice;
-    int _amountDevices;
+    int _amountDevices;    
 };
 
 #endif // DEVICECONTROLLER_H

@@ -38,9 +38,9 @@ const bool &Device::getIsFree() const {
     return _isFree;
 }
 
-void Device::setIsFree(const bool &isFree) {
-    _isFree = isFree;
-}
+//void Device::setIsFree(const bool &isFree) {
+//    _isFree = isFree;
+//}
 
 void Device::setTime(const float &time) {
     _time = time;
