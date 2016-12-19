@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QTableWidget>
 #include <QSpinBox>
-
+#include "layer.h"
 namespace Ui {
 class ResultTable;
 }
@@ -19,6 +19,8 @@ public:
 
     void FillTable();
 
+    std::vector<float> getRowFromTable(QTableWidget *table, int n) const;
+
 private slots:
     void changeSoursesSpinBox();
     void changeBufferSpinBox();
@@ -32,6 +34,9 @@ private:
     std::vector<float> getColumnFromTable(QTableWidget *table, int n) const;
     void updateTableRows(QTableWidget *table, QSpinBox *spinBox);
     void updateTableColumns(QTableWidget *table, QSpinBox *spinBox);
+
+private:
+    Layer *_layer;
 };
 
 #endif // RESULTTABLE_H
