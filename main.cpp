@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
     layer.setSMOAdgs(soursesArgs, bufferSize, devisesArgs, worktime);
 
-    for (int i = 0; i  < 10; ++i) {
+    for (int i = 0; i  < 15; ++i) {
         std::cout << "====loop N: " << i << "=====\n\n";
         layer.step();
     }

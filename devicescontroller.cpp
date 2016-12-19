@@ -17,10 +17,13 @@ void DevicesController::putBidToDevice(const Bid &bid) {
     for (int i = 0; i < _amountDevices; ++i) {
         if (_devices.at(_currentDevice).getIsFree()) {
             _devices.at(_currentDevice).putBid(bid);
+//            std::cout << "\nDevice p: " << _currentDevice << std::endl;
             break;
-        }
+        }        
+
         moveDevicePointer();
     }
+    moveDevicePointer();
 }
 
 float DevicesController::getMinDeviceTime() const {
@@ -57,7 +60,7 @@ void DevicesController::freeReadyDevices() {
         } else {
             if (_devices.at(i).getTime() <= Director::getInstance()->getTime()) {
                 _devices.at(i).freeBid();
-                std::cout << "\n\nfffffffffff\n\n";
+//                std::cout << "\n\nfffffffffff\n\n";
             }
         }
     }
@@ -81,6 +84,7 @@ void DevicesController::updateFreeDevices() {
 }
 
 void DevicesController::moveDevicePointer() {
+//    ++_currentDevice;
     if (++_currentDevice == _amountDevices) {
         _currentDevice = 0;
     }
