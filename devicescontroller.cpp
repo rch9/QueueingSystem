@@ -68,12 +68,7 @@ void DevicesController::freeReadyDevices() {
 }
 
 void DevicesController::updateFreeDevices() {
-//    for(auto device : _devices) {
-//        if (device.getIsFree()) {
-//            device.setTime(1111);
-////            std::cout << device.getTime();
-//        }
-//    }
+
 
     for(size_t i = 0; i < _devices.size(); ++i) {
         if(_devices.at(i).getIsFree()) {
@@ -84,7 +79,7 @@ void DevicesController::updateFreeDevices() {
 }
 
 void DevicesController::moveDevicePointer() {
-//    ++_currentDevice;
+
     if (++_currentDevice == _amountDevices) {
         _currentDevice = 0;
     }

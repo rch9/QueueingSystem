@@ -41,68 +41,6 @@ void Layer::step() {
     float sourceTime = _sourceController.getMinSourceTime();
     float deviceBusyTime = _deviceController.getMinBusyDeviceTime();
 
-    //    cout << "dev in step " << deviceTime << endl;
-    //    cout << "sou in step " << sourceTime << endl;
-    /*
-    if (deviceTime == 0) {
-        Director::getInstance()->setTime(sourceTime);
-        _deviceController.updateFreeDevices(Director::getInstance()->getTime());
-    } else {
-
-        if (deviceBusyTime < 0) {
-            Director::getInstance()->setTime(sourceTime);
-
-            if (_buffer.size()) {
-                _deviceController.putBidToDevice(_buffer.popBid());
-            } else {
-                _buffer.putBid(_sourceController.pullMinSourceBid());
-            }
-
-        } else {
-            if (sourceTime < deviceBusyTime) {
-                Director::getInstance()->setTime(sourceTime);
-                _buffer.putBid(_sourceController.pullMinSourceBid());
-
-            } else {
-                Director::getInstance()->setTime(deviceBusyTime);
-                if (_buffer.size()) {
-                    _deviceController.putBidToDevice(_buffer.popBid());
-                }
-            }
-        }
-    }
-
-*/
-
-    /*
-    if (deviceTime == 0) {
-        Director::getInstance()->setTime(sourceTime);
-        _deviceController.updateFreeDevices(Director::getInstance()->getTime());
-        _buffer.putBid(_sourceController.pullMinSourceBid());
-    } else {
-
-        if (deviceBusyTime < 0) {
-            if (_buffer.size()) {
-                _deviceController.putBidToDevice(_buffer.popBid());
-            }
-        } else {
-            if (deviceBusyTime < sourceTime) {
-                Director::getInstance()->setTime(deviceBusyTime);
-                _deviceController.freeReadyDevices();
-            } else {
-                //                Director::getInstance()->setTime(sourceTime);
-                if (deviceTime < sourceTime && _buffer.size()) {
-//                    Director::getInstance()->setTime(deviceTime);
-                    _deviceController.putBidToDevice(_buffer.popBid());
-                } else {
-                    Director::getInstance()->setTime(sourceTime);
-                    _buffer.putBid(_sourceController.pullMinSourceBid());
-                }
-            }
-        }
-    }
-    */
-
     if (deviceTime == 0) {
         Director::getInstance()->setTime(sourceTime);
         _deviceController.updateFreeDevices();
@@ -188,7 +126,7 @@ void StatisticsInfoManager::addedFailureBid(const Bid &bid) {
 // не нужно
 void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {
     //    (*bid).setInBufferStartTime(Director::getInstance()->getTime());
-    //    std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
+    std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
 }
 
 void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {
@@ -196,15 +134,15 @@ void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {
     //    std::cout << "\ndev: " << (bid).getInDeviceStartTime();
     //    std::cout << "\nt: " << bid.getTime();
     //    std::cout << "\nsys: " << (bid).getInSystemTime();
-    //    std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
+    std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
 }
 
 void StatisticsInfoManager::addedDoneBid(const Bid &bid, const int &deviceNumber) {
     //    std::cout << "\ndev: " << (*bid).getInDeviceStartTime();
     //    std::cout << "\nt: " << (*bid).getInDeviceStartTime();
     //    std::cout << "\nsys: " << (*bid).getInSystemTime();
-    //    std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
-    //    std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
+    std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
+    std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {
