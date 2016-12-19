@@ -20,7 +20,7 @@ void Device::putBid(Bid bid) {
 void Device::freeBid() {
     Bid bid;
     _bid.setInSystemTime(_time);
-    StatisticsInfoManager::getInstance()->addedDoneBid(_bid, _number);
+    StatisticsInfoManager::getInstance()->addedDoneBid(_bid);
     _bid = bid;
     _time = Director::getInstance()->getTime();
     _isFree = true;

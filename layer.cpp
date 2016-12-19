@@ -18,6 +18,8 @@ void Layer::setSMOAdgs(std::vector<std::pair<float, float> > soursesArgs, size_t
     _deviceController.init(devisesArgs);
     _workTime = worktime;
 
+    StatisticsInfoManager::getInstance()->initSMOArgs(soursesArgs.size(), devisesArgs.size());
+
     cout << "init: " << endl;
     cout << _sourceController << endl;
     cout << _buffer << endl;
@@ -62,12 +64,13 @@ void Layer::step() {
     }
 
 
-    cout << _sourceController << endl;
-    cout << _buffer << endl;
-    cout << _deviceController << endl;
-    cout << "Director time: " << Director::getInstance()->getTime() << std::endl;
+//    cout << _sourceController << endl;
+//    cout << _buffer << endl;
+//    cout << _deviceController << endl;
+//    cout << "Director time: " << Director::getInstance()->getTime() << std::endl;
 
     StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
+    StatisticsInfoManager::getInstance()->printStat();
 }
 
 StatisticsInfoManager *StatisticsInfoManager::getInstance() {
@@ -116,33 +119,81 @@ const StatisticsInfoManager::vect_str &StatisticsInfoManager::getFailureStatisti
 }
 
 
-void StatisticsInfoManager::addedFailureBid(const Bid &bid) {
-    //    (*bid).setInSystemTime(Director::getInstance()->getTime());
-    _failure.push_back(bid);
+void StatisticsInfoManager::addedFailureBid(const Bid &bid) {    
+//    _failure.push_back(bid);
     _failureInfo.push_back({ std::to_string((bid).getSource()), std::to_string((bid).getNumber()) });
-    std::cout << "\nadded to failure: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+//    std::cout << "\nadded to failure: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
+
+    ++_FBidsTable.at(bid.getSource());
+    _TSysTable.at(bid.getSource()) += (Director::getInstance()->getTime() - bid.getTime());
+    _TBufTable.at(bid.getSource()) += (Director::getInstance()->getTime() - bid.getTime());
 }
 
-// не нужно
-void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {
-    //    (*bid).setInBufferStartTime(Director::getInstance()->getTime());
-    std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
+void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {    
+//    std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
+    ++_NBidsTable.at(bid.getSource());
 }
 
-void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {
-    //    (*bid).setInDeviceStartTime(Director::getInstance()->getTime());
-    //    std::cout << "\ndev: " << (bid).getInDeviceStartTime();
-    //    std::cout << "\nt: " << bid.getTime();
-    //    std::cout << "\nsys: " << (bid).getInSystemTime();
-    std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
+void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {    
+//    std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
+    _TBufTable.at(bid.getSource()) += (bid.getInDeviceStartTime() - bid.getTime());
 }
 
-void StatisticsInfoManager::addedDoneBid(const Bid &bid, const int &deviceNumber) {
-    //    std::cout << "\ndev: " << (*bid).getInDeviceStartTime();
-    //    std::cout << "\nt: " << (*bid).getInDeviceStartTime();
-    //    std::cout << "\nsys: " << (*bid).getInSystemTime();
-    std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
-    std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
+void StatisticsInfoManager::addedDoneBid(const Bid &bid) {
+//    std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
+//    std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
+
+    _TDevTable.at(bid.getSource()) += ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
+    _TSysTable.at(bid.getSource()) += ((bid).getInSystemTime() - (bid).getTime());
+
+}
+
+void StatisticsInfoManager::initSMOArgs(int sourcesCount, int devicesCount) {
+    for (int i = 0; i < sourcesCount; ++i) {
+        _NBidsTable.push_back(0); //кол-во заявок
+        _FBidsTable.push_back(0); //кол-во заявок отказов
+        _PFTable.push_back(0.f); //вероятность отказа - потом
+        _TSysTable.push_back(0.f); //время в системе
+        _TBufTable.push_back(0.f); //время в буфере
+        _TDevTable.push_back(0.f); //кол-во заявок
+    }
+
+    for (int i = 0; i < devicesCount; ++i) {
+        _KTable.push_back(0.f); //коэф. приборов - потом
+    }
+}
+
+void StatisticsInfoManager::printStat() {
+    cout << endl;
+    cout << "NBIDs: ";
+    for (auto i : _NBidsTable) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "FBIDs: ";
+    for (auto i : _FBidsTable) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "TSys: ";
+    for (auto i : _TSysTable) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "TBuf: ";
+    for (auto i : _TBufTable) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "TDev: ";
+    for (auto i : _TDevTable) {
+        cout << i << " ";
+    }
+    cout << endl;
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {
