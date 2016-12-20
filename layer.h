@@ -42,6 +42,7 @@ public:
 
     void setAllTime(float allTime);
     float getAllTime() const;
+    float getAllP() const;
 
     void cleanAll();
 

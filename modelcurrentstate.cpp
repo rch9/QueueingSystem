@@ -18,7 +18,7 @@ ModelCurrentState::ModelCurrentState(QWidget *parent) :
     connect(ui->devucesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(changeDevisesSpinBox()));
     connect(ui->startButton, SIGNAL(pressed()), this, SLOT(pressStart()));
     connect(ui->stepButton, SIGNAL(pressed()), this, SLOT(pressStep()));
-//    connect(ui->backButton, SIGNAL(pressed()), this, SLOT(pressBack()));
+    connect(ui->cleanButton, SIGNAL(pressed()), this, SLOT(pressClean()));
 }
 
 ModelCurrentState::~ModelCurrentState()

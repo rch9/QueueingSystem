@@ -50,6 +50,8 @@ void ResultTable::FillTable() {
         resTable->setItem(i, 4, new QTableWidgetItem(std::to_string(tbuf.at(i)).c_str()));
         resTable->setItem(i, 5, new QTableWidgetItem(std::to_string(tdev.at(i)).c_str()));
     }
+    resTable->insertRow(resTable->rowCount());
+    resTable->setItem(nbids.size(), 2, new QTableWidgetItem(std::to_string(manager->getAllP()).c_str()));
 
     ui->devKTable->setRowCount(kdev.size());
 

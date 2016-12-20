@@ -173,7 +173,18 @@ std::vector<float> StatisticsInfoManager::getKTable() const
 
 void StatisticsInfoManager::addKTable(float value, int number)
 {
-    _KTable.at(number) = value;    
+    _KTable.at(number) = value;
+}
+
+float StatisticsInfoManager::getAllP() const
+{
+    float N = 0.f, F = 0.f;
+    for(int i = 0; i < _NBidsTable.size(); ++i) {
+        N += _NBidsTable.at(i);
+        F += _FBidsTable.at(i);
+    }
+
+    return (F / N);
 }
 
 void StatisticsInfoManager::cleanAll() {

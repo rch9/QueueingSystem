@@ -7,27 +7,18 @@
 #include "source.h"
 #include <iostream>
 #include "director.h"
+#include "randomhelper.h"
+#include <ctime>
 
 int main(int argc, char *argv[]) {    
 
-//        Layer layer;
+    srand(static_cast<unsigned>(time(0)));
 
-//        std::vector<std::pair<float, float> > soursesArgs = {std::make_pair(1.f, 3.f), std::make_pair(1.f, 3.f), std::make_pair(1.f, 3.f)};
-//        size_t bufferSize = 3;
-//        std::vector<float> devisesArgs = {1.f, 1.f, 1.f};
-//        float worktime = 10;
-
-//        layer.setSMOAdgs(soursesArgs, bufferSize, devisesArgs, worktime);
-
-//        for (int i = 0; i  < 1500000; ++i) {
-//            std::cout << "====loop N: " << i << "=====\n\n";
-//            layer.step();
-//        }
-
+//    std::cout << RandomHelper::rand_exponential(0.5) << std::endl;
+//    std::cout << RandomHelper::rand_uniform(1, 2) << std::endl;
 //    return 0;
 
     QApplication a(argc, argv);
-//    ModelCurrentState w;
     ResultTable r;
     ModelCurrentState m;
 
