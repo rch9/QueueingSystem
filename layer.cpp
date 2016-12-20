@@ -136,39 +136,6 @@ void StatisticsInfoManager::initSMOArgs(int sourcesCount, int devicesCount) {
     }
 }
 
-void StatisticsInfoManager::printStat() {
-    cout << endl;
-    cout << "NBIDs: ";
-    for (auto i : _NBidsTable) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    cout << "FBIDs: ";
-    for (auto i : _FBidsTable) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    cout << "TSys: ";
-    for (auto i : _TSysTable) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    cout << "TBuf: ";
-    for (auto i : _TBufTable) {
-        cout << i << " ";
-    }
-    cout << endl;
-
-    cout << "TDev: ";
-    for (auto i : _TDevTable) {
-        cout << i << " ";
-    }
-    cout << endl;
-}
-
 std::vector<int> StatisticsInfoManager::getNBidsTable() const
 {
     return _NBidsTable;
@@ -206,18 +173,36 @@ std::vector<float> StatisticsInfoManager::getKTable() const
 
 void StatisticsInfoManager::addKTable(float value, int number)
 {
-    _KTable.at(number) = value;
-    cout << "value  " << value << "\n\n";
+    _KTable.at(number) = value;    
 }
 
-void StatisticsInfoManager::setAllTime(float allTime)
-{
-    _allTime = allTime;
-}
+void StatisticsInfoManager::cleanAll() {
 
-float StatisticsInfoManager::getAllTime() const
-{
-    return _allTime;
+//    _soursesInfo.erase(_soursesInfo.begin(), _soursesInfo.end());
+//    _bufferInfo.erase(_bufferInfo.begin(), _bufferInfo.end());
+//    _devicesInfo.erase(_devicesInfo.begin(), _devicesInfo.end());
+//    _failureInfo.erase(_failureInfo.begin(), _failureInfo.end());
+
+//    _NBidsTable.erase(_NBidsTable.begin(), _NBidsTable.end()); //кол-во заявок
+//    _FBidsTable.erase(_FBidsTable.begin(), _FBidsTable.end()); //кол-во заявок отказов
+//    _PFTable.erase(_PFTable.begin(), _PFTable.end()); //вероятность отказа - потом
+//    _TSysTable.erase(_TSysTable.begin(), _TSysTable.end()); //время в системе
+//    _TBufTable.erase(_TBufTable.begin(), _TBufTable.end()); //время в буфере
+//    _TDevTable.erase(_TDevTable.begin(), _TDevTable.end()); //кол-во заявок
+//    _KTable.erase(_KTable.begin(), _KTable.end()); //коэф. приборов - потом
+
+    _soursesInfo.clear();
+    _bufferInfo.clear();
+    _devicesInfo.clear();
+    _failureInfo.clear();
+
+    _NBidsTable.clear(); //кол-во заявок
+    _FBidsTable.clear(); //кол-во заявок отказов
+    _PFTable.clear(); //вероятность отказа - потом
+    _TSysTable.clear(); //время в системе
+    _TBufTable.clear(); //время в буфере
+    _TDevTable.clear(); //кол-во заявок
+    _KTable.clear(); //коэф. приборов - потом
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {

@@ -103,19 +103,6 @@
     <number>1</number>
    </property>
   </widget>
-  <widget class="QPushButton" name="backButton">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>300</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Назад</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
@@ -129,7 +116,7 @@
     <string>Начать</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="exitButton">
+  <widget class="QPushButton" name="cleanButton">
    <property name="geometry">
     <rect>
      <x>850</x>
@@ -139,7 +126,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Выход</string>
+    <string>Сброс</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="resultTable">
@@ -278,6 +265,38 @@
    </property>
    <property name="text">
     <string>Приборы</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="tickSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>200</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>1000</number>
+   </property>
+   <property name="maximum">
+    <number>1000000</number>
+   </property>
+   <property name="singleStep">
+    <number>5000</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>170</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Число тиков</string>
    </property>
   </widget>
  </widget>

@@ -26,8 +26,7 @@ private slots:
     void changeBufferSpinBox();
     void changeDevisesSpinBox();
     void pressStart();
-    void pressStep();
-    void pressBack();
+    void pressClean();    
 
 private:
     Ui::ResultTable *ui;

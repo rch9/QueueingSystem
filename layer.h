@@ -12,9 +12,6 @@
 class StatisticsInfoManager {
     typedef std::vector<std::vector<std::string>> vect_str;
 
-    //кол-во заявок, отказов, вероятность отказа, время в сист, время в буфере, время обсл
-    typedef std::tuple<int, int, float, float, float, float> source_typle;
-
 public:
     static StatisticsInfoManager *getInstance();
 
@@ -31,9 +28,7 @@ public:
     void addedBidToBuffer(const Bid &bid);
     void addedBidToDevice(const Bid &bid);
     void addedDoneBid(const Bid &bid);
-    void initSMOArgs(int sourcesCount, int devicesCount);
-
-    void printStat();
+    void initSMOArgs(int sourcesCount, int devicesCount);   
 
     std::vector<int> getNBidsTable() const;
     std::vector<int> getFBidsTable() const;
@@ -48,14 +43,13 @@ public:
     void setAllTime(float allTime);
     float getAllTime() const;
 
+    void cleanAll();
+
 private:
     vect_str _soursesInfo;
     vect_str _bufferInfo;
     vect_str _devicesInfo;
-    vect_str _failureInfo;
-
-    std::vector<Bid> _failure;
-    std::vector<source_typle> _soursesTable;
+    vect_str _failureInfo;    
 
     std::vector<int> _NBidsTable; //кол-во заявок
     std::vector<int> _FBidsTable; //кол-во заявок отказов
@@ -63,8 +57,7 @@ private:
     std::vector<float> _TSysTable; //время в системе
     std::vector<float> _TBufTable; //время в буфере
     std::vector<float> _TDevTable; //кол-во заявок
-    std::vector<float> _KTable; //коэф. приборов - потом
-    float _allTime;
+    std::vector<float> _KTable; //коэф. приборов - потом    
 private:
     StatisticsInfoManager();        
 };

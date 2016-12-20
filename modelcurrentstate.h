@@ -26,7 +26,7 @@ private slots:
     void changeDevisesSpinBox();
     void pressStart();
     void pressStep();
-    void pressBack();
+    void pressClean();    
 
 private:
     Ui::ModelCurrentState *ui;

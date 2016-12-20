@@ -8,7 +8,8 @@ class Director : public Timeable
 public:
     static Director *getInstance();
 
-    void setTime(const float &time);        
+    void setTime(const float &time);
+    void cleanAll();
 private:    
     Director();
 private:    

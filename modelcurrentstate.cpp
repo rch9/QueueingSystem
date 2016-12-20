@@ -2,7 +2,8 @@
 #include "ui_modelcurrentstate.h"
 #include <QTableWidgetItem>
 #include <iostream>
-
+#include "director.h"
+#include "resulttable.h"
 #include "layer.h"
 
 ModelCurrentState::ModelCurrentState(QWidget *parent) :
@@ -17,7 +18,7 @@ ModelCurrentState::ModelCurrentState(QWidget *parent) :
     connect(ui->devucesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(changeDevisesSpinBox()));
     connect(ui->startButton, SIGNAL(pressed()), this, SLOT(pressStart()));
     connect(ui->stepButton, SIGNAL(pressed()), this, SLOT(pressStep()));
-    connect(ui->backButton, SIGNAL(pressed()), this, SLOT(pressBack()));
+//    connect(ui->backButton, SIGNAL(pressed()), this, SLOT(pressBack()));
 }
 
 ModelCurrentState::~ModelCurrentState()
@@ -54,13 +55,19 @@ void ModelCurrentState::pressStart() {
     fillTables();
 }
 
-void ModelCurrentState::pressStep() {
-    //    _layer->run();
+void ModelCurrentState::pressStep() {    
     _layer->step();
     fillTables();
 }
 
-void ModelCurrentState::pressBack() {
+void ModelCurrentState::pressClean() {
+    ui->soursesSpinBox->setValue(1);
+    ui->devucesSpinBox->setValue(1);
+    ui->bufferSpinBox->setValue(1);
+    StatisticsInfoManager::getInstance()->cleanAll();
+    Director::getInstance()->cleanAll();
+    delete _layer;
+    _layer = new Layer();
 
 }
 

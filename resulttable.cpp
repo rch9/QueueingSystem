@@ -1,5 +1,6 @@
 #include "resulttable.h"
 #include "ui_resulttable.h"
+#include "modelcurrentstate.h"
 #include "layer.h"
 #include "director.h"
 #include <iostream>
@@ -15,6 +16,8 @@ ResultTable::ResultTable(QWidget *parent) :
     connect(ui->soursesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(changeSoursesSpinBox()));
     connect(ui->bufferSpinBox, SIGNAL(valueChanged(int)), this, SLOT(changeBufferSpinBox()));
     connect(ui->devisesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(changeDevisesSpinBox()));
+//    connect(ui->backButton, SIGNAL(pressed()), this, SLOT(pressBack()));
+    connect(ui->cleanButton, SIGNAL(pressed()), this, SLOT(pressClean()));    
 }
 
 ResultTable::~ResultTable()
@@ -73,6 +76,8 @@ void ResultTable::changeDevisesSpinBox() {
 
 void ResultTable::pressStart() {
 
+//    pressClean();
+
     std::vector<std::pair<float, float>> vectPair;
     auto vect1 = getRowFromTable(ui->sourcesTable, 0);
     auto vect2 = getRowFromTable(ui->sourcesTable, 1);
@@ -84,7 +89,7 @@ void ResultTable::pressStart() {
 
     _layer->setSMOAdgs(vectPair, ui->bufferSpinBox->text().toInt(), getRowFromTable(ui->devicesTable, 0), 10.f);
 
-    for (int i = 0; i < 1000; ++i) {
+    for (int i = 0; i < ui->tickSpinBox->value(); ++i) {
         _layer->step();
     }
 
@@ -92,13 +97,17 @@ void ResultTable::pressStart() {
     FillTable();
 }
 
-void ResultTable::pressStep() {
-
+void ResultTable::pressClean() {
+    ui->tickSpinBox->setValue(1000);
+    ui->soursesSpinBox->setValue(1);
+    ui->devisesSpinBox->setValue(1);
+    ui->bufferSpinBox->setValue(1);
+    Director::getInstance()->cleanAll();
+    StatisticsInfoManager::getInstance()->cleanAll();
+    delete _layer;
+    _layer = new Layer();
 }
 
-void ResultTable::pressBack() {
-
-}
 
 std::vector<float> ResultTable::getRowFromTable(QTableWidget *table, int n) const {
     std::vector<float> resultVect;

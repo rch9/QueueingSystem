@@ -28,10 +28,14 @@ int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
 //    ModelCurrentState w;
-    ResultTable w;
+    ResultTable r;
+    ModelCurrentState m;
 
-    w.show();
+    r.show();
+    m.show();
 
-    return a.exec();
+
+    m.exec();
+    return r.exec();
 }
 
