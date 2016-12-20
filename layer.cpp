@@ -18,21 +18,10 @@ void Layer::setSMOAdgs(std::vector<std::pair<float, float> > soursesArgs, size_t
     _deviceController.init(devisesArgs);
     _workTime = worktime;
 
-    StatisticsInfoManager::getInstance()->initSMOArgs(soursesArgs.size(), devisesArgs.size());
-
-    cout << "init: " << endl;
-    cout << _sourceController << endl;
-    cout << _buffer << endl;
-    cout << _deviceController << endl;
-    cout << "\nDirector time: " << Director::getInstance()->getTime() << std::endl << std::endl;
+    StatisticsInfoManager::getInstance()->initSMOArgs(soursesArgs.size(), devisesArgs.size());    
 }
 
-bool Layer::run() {
-    //    cout << _sourceController << endl;
-    //    cout << _buffer << endl;
-    //    cout << _deviceController << endl;
-    //    cout << endl << "======================" << endl;
-
+bool Layer::run() {   
     StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
 
     return true;
@@ -61,16 +50,9 @@ void Layer::step() {
                 _buffer.putBid(_sourceController.pullMinSourceBid());
             }
         }
-    }
+    }            
 
-
-//    cout << _sourceController << endl;
-//    cout << _buffer << endl;
-//    cout << _deviceController << endl;
-//    cout << "Director time: " << Director::getInstance()->getTime() << std::endl;
-
-    StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);
-    StatisticsInfoManager::getInstance()->printStat();
+    StatisticsInfoManager::getInstance()->setStatistic(_sourceController, _buffer, _deviceController);    
 }
 
 StatisticsInfoManager *StatisticsInfoManager::getInstance() {
@@ -120,32 +102,23 @@ const StatisticsInfoManager::vect_str &StatisticsInfoManager::getFailureStatisti
 
 
 void StatisticsInfoManager::addedFailureBid(const Bid &bid) {    
-//    _failure.push_back(bid);
     _failureInfo.push_back({ std::to_string((bid).getSource()), std::to_string((bid).getNumber()) });
-//    std::cout << "\nadded to failure: "  << Director::getInstance()->getTime() - bid.getTime() << std::endl << std::endl;
-
     ++_FBidsTable.at(bid.getSource());
     _TSysTable.at(bid.getSource()) += (Director::getInstance()->getTime() - bid.getTime());
     _TBufTable.at(bid.getSource()) += (Director::getInstance()->getTime() - bid.getTime());
 }
 
 void StatisticsInfoManager::addedBidToBuffer(const Bid &bid) {    
-//    std::cout << "\nthink zero: " << ((bid).getInBufferStartTime() - (bid).getTime()) << "\n\n";
     ++_NBidsTable.at(bid.getSource());
 }
 
 void StatisticsInfoManager::addedBidToDevice(const Bid &bid) {    
-//    std::cout << "\ntime in buff: " << ((bid).getInDeviceStartTime() - (bid).getTime()) << "\n\n";
     _TBufTable.at(bid.getSource()) += (bid.getInDeviceStartTime() - bid.getTime());
 }
 
 void StatisticsInfoManager::addedDoneBid(const Bid &bid) {
-//    std::cout << "\ntime in dev: " << ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
-//    std::cout << "\ntime in system: " << ((bid).getInSystemTime() - (bid).getTime()) << "\n\n";
-
     _TDevTable.at(bid.getSource()) += ((bid).getInSystemTime() - (bid).getInDeviceStartTime());
-    _TSysTable.at(bid.getSource()) += ((bid).getInSystemTime() - (bid).getTime());
-
+    _TSysTable.at(bid.getSource()) += ((bid).getInSystemTime() - (bid).getTime());    
 }
 
 void StatisticsInfoManager::initSMOArgs(int sourcesCount, int devicesCount) {
@@ -229,6 +202,22 @@ std::vector<float> StatisticsInfoManager::getTDevTable() const
 std::vector<float> StatisticsInfoManager::getKTable() const
 {
     return _KTable;
+}
+
+void StatisticsInfoManager::addKTable(float value, int number)
+{
+    _KTable.at(number) = value;
+    cout << "value  " << value << "\n\n";
+}
+
+void StatisticsInfoManager::setAllTime(float allTime)
+{
+    _allTime = allTime;
+}
+
+float StatisticsInfoManager::getAllTime() const
+{
+    return _allTime;
 }
 
 StatisticsInfoManager::StatisticsInfoManager() {

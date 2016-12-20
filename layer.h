@@ -43,6 +43,11 @@ public:
     std::vector<float> getTDevTable() const;
     std::vector<float> getKTable() const;
 
+    void addKTable(float value, int number);
+
+    void setAllTime(float allTime);
+    float getAllTime() const;
+
 private:
     vect_str _soursesInfo;
     vect_str _bufferInfo;
@@ -59,6 +64,7 @@ private:
     std::vector<float> _TBufTable; //время в буфере
     std::vector<float> _TDevTable; //кол-во заявок
     std::vector<float> _KTable; //коэф. приборов - потом
+    float _allTime;
 private:
     StatisticsInfoManager();        
 };

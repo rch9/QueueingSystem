@@ -2,11 +2,13 @@
 #include "randomhelper.h"
 #include "layer.h"
 #include "director.h"
+#include <iostream>
 
 Device::Device(float lambda, int number):
     Controller(number),
     _lambda(lambda),
-    _isFree(true) {
+    _isFree(true),
+    _workTime(0.f) {
 }
 
 void Device::putBid(Bid bid) {
@@ -24,6 +26,9 @@ void Device::freeBid() {
     _bid = bid;
     _time = Director::getInstance()->getTime();
     _isFree = true;
+    _workTime += (_time - _bid.getInDeviceStartTime());
+//    std::cout << "WORK " << _workTime << "\n";
+    StatisticsInfoManager::getInstance()->addKTable((_time - _bid.getInDeviceStartTime()), _number);
 }
 
 const Bid &Device::getBid() const {
@@ -32,6 +37,11 @@ const Bid &Device::getBid() const {
 
 float Device::distributionLaw() {
     return RandomHelper::rand_exponential(_lambda);
+}
+
+float Device::getWorkTime() const
+{
+    return _workTime;
 }
 
 const bool &Device::getIsFree() const {

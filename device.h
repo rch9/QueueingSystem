@@ -16,12 +16,15 @@ public:
 //    void setIsFree(const bool &isFree);
     void setTime(const float &time);
 
+    float getWorkTime() const;
+
 protected:
     float distributionLaw();
 private:
     float _lambda;
     Bid _bid;
     bool _isFree;
+    float _workTime;
 };
 
 #endif // DEVICE_H

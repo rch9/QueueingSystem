@@ -1,6 +1,8 @@
 #include "resulttable.h"
 #include "ui_resulttable.h"
 #include "layer.h"
+#include "director.h"
+#include <iostream>
 
 ResultTable::ResultTable(QWidget *parent) :
     QDialog(parent),
@@ -28,6 +30,7 @@ void ResultTable::FillTable() {
     auto tsys = manager->getTSysTable();
     auto tbuf = manager->getTBufTable();
     auto tdev = manager->getTDevTable();
+    auto kdev = manager->getKTable();
 
 
     auto resTable = ui->resultTable;
@@ -45,6 +48,13 @@ void ResultTable::FillTable() {
         resTable->setItem(i, 5, new QTableWidgetItem(std::to_string(tdev.at(i)).c_str()));
     }
 
+    ui->devKTable->setRowCount(kdev.size());
+
+//    std::cout << "\n\nDIRECTOR: " << Director::getInstance()->getTime() <<  "\n";
+    for (int i = 0; i < kdev.size(); ++i) {
+        ui->devKTable->setItem(i, 0, new QTableWidgetItem(std::to_string(kdev.at(i) / Director::getInstance()->getTime()).c_str()));
+    }
+
 }
 
 void ResultTable::changeSoursesSpinBox() {
@@ -58,6 +68,7 @@ void ResultTable::changeBufferSpinBox() {
 
 void ResultTable::changeDevisesSpinBox() {
     updateTableColumns(ui->devicesTable, ui->devisesSpinBox);
+    updateTableRows(ui->devKTable, ui->devisesSpinBox);
 }
 
 void ResultTable::pressStart() {
